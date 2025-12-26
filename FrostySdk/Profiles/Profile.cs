@@ -5,7 +5,9 @@ namespace Frosty.Sdk.Profiles;
 public class Profile
 {
     public string Name  { get; set; } = string.Empty;
+    public string Bootflow { get; set; } = string.Empty;
     public string DisplayName { get; set; } = string.Empty;
+    public bool HasDenuvoTicket { get; set; }
 
     public string InternalName { get; set; } = string.Empty;
 

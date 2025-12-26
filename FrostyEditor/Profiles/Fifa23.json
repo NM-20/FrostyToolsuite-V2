@@ -1,5 +1,6 @@
 {
   "Name": "FIFA23",
+  "Bootflow": "Fifa23Bootflow",
   "DisplayName": "FIFA 23",
   "InternalName": "fifa23",
   "TypeInfoSignature": "48 39 1D ?? ?? ?? ?? ?? ?? 48 8b 43 10",

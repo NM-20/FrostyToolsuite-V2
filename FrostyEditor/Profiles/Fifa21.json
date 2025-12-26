@@ -1,5 +1,6 @@
 {
   "Name": "FIFA21",
+  "Bootflow": "Fifa21Bootflow",
   "DisplayName": "FIFA 21",
   "InternalName": "fifa21",
   "TypeInfoSignature": "",

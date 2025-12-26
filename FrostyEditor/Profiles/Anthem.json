@@ -1,6 +1,8 @@
-﻿{
+{
   "Name": "Anthem",
+  "Bootflow": "AnthemBootflow",
   "DisplayName": "Anthem™",
+  "HasDenuvoTicket": true,
   "InternalName": "anthem",
   "TypeInfoSignature" : "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ??",
   "TypeHashSeed" : "1032",

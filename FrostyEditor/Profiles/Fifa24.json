@@ -1,6 +1,8 @@
 {
   "Name": "FC24",
+  "Bootflow": "Fifa24Bootflow",
   "DisplayName": "FIFA 24",
+  "HasDenuvoTicket": true,
   "InternalName": "fifa24",
   "TypeInfoSignature": "48 39 1D ?? ?? ?? ?? ?? ?? 48 8b 43 10",
   "DataVersion": 20230929,

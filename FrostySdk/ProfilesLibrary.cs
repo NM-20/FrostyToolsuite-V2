@@ -13,7 +13,9 @@ public static class ProfilesLibrary
     public static bool IsInitialized { get; private set; }
 
     public static string ProfileName => s_effectiveProfile?.Name ?? string.Empty;
+    public static string Bootflow => (s_effectiveProfile?.Bootflow ?? string.Empty);
     public static string DisplayName => s_effectiveProfile?.DisplayName ?? string.Empty;
+    public static bool HasDenuvoTicket => (s_effectiveProfile?.HasDenuvoTicket ?? false);
     public static string InternalName => s_effectiveProfile?.InternalName?? string.Empty;
     public static string TypeInfoSignature => s_effectiveProfile?.TypeInfoSignature ?? string.Empty;
     public static bool HasStrippedTypeNames => s_effectiveProfile?.HasStrippedTypeNames ?? false;

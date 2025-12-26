@@ -1,6 +1,8 @@
 {
   "Name": "BF2042",
+  "Bootflow": "Bf2042Bootflow",
   "DisplayName": "Battlefield™ 2042",
+  "HasDenuvoTicket": true,
   "InternalName": "bf2042",
   "TypeInfoSignature": "48 39 1D ?? ?? ?? ?? ?? ?? 48 8b 43 10",
   "TypeHashSeed": "1030",

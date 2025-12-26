@@ -1,6 +1,8 @@
 {
   "Name": "PVZBattleforNeighborville",
+  "Bootflow": "PvZ3Bootflow",
   "DisplayName": "Plants vs Zombies: Battle for Neighborville™",
+  "HasDenuvoTicket": false,
   "InternalName": "pvz3",
   "TypeInfoSignature": "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ??",
   "DataVersion": 20191017,

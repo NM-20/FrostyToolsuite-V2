@@ -1,6 +1,8 @@
-﻿{
+{
   "Name": "MassEffectAndromeda",
+  "Bootflow": "MassEffectBootflow",
   "DisplayName": "Mass Effect: Andromeda",
+  "HasDenuvoTicket": false,
   "InternalName": "masseffect",
   "TypeInfoSignature" : "48 8b 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 48 8d 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? E9",
   "HasStrippedTypeNames": false,

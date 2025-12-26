@@ -1,5 +1,6 @@
 {
   "Name": "NFSOL",
+  "Bootflow": "NfsEdgeBootflow",
   "DisplayName": "Need for Speed™ ONLINE",
   "InternalName": "nfsedge",
   "TypeInfoSignature": "",

@@ -1,6 +1,8 @@
-﻿{
+{
   "Name": "starwarsbattlefrontii",
+  "Bootflow": "StarWarsIIBootflow",
   "DisplayName": "STAR WARS™ Battlefront™ II",
+  "HasDenuvoTicket": true,
   "InternalName": "starwarsii",
   "TypeInfoSignature" : "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ?? 48 ?? ?? C3",
   "HasStrippedTypeNames": false,

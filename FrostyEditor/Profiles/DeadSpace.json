@@ -1,6 +1,8 @@
 {
   "Name": "Dead Space",
+  "Bootflow": "DeadSpaceBootflow",
   "DisplayName": "Dead Space",
+  "HasDenuvoTicket": true,
   "InternalName": "deadspace",
   "TypeInfoSignature": "48 39 1D ?? ?? ?? ?? ?? ?? 48 8b 43 10",
   "DataVersion": 20211119,

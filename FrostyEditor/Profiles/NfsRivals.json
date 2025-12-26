@@ -1,6 +1,8 @@
-﻿{
+{
   "Name": "NFS14",
+  "Bootflow": "Nfs14Bootflow",
   "DisplayName": "Need for Speed™ Rivals",
+  "HasDenuvoTicket": false,
   "InternalName": "nfs14",
   "TypeInfoSignature" : "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ?? C3",
   "HasStrippedTypeNames": false,

@@ -1,6 +1,8 @@
 {
   "Name": "bf4",
+  "Bootflow": "Bf4Bootflow",
   "DisplayName": "Battlefield™ 4",
+  "HasDenuvoTicket": false,
   "InternalName": "bf4",
   "TypeInfoSignature": "",
   "DataVersion": 20131101,

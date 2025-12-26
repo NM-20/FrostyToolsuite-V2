@@ -1,6 +1,8 @@
 {
   "Name": "bfh",
+  "Bootflow": "BfhBootflow",
   "DisplayName": "Battlefield™ Hardline",
+  "HasDenuvoTicket": false,
   "InternalName": "bfh",
   "TypeInfoSignature": "",
   "DataVersion": 20161012,

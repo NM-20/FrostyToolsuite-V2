@@ -1,6 +1,8 @@
-﻿{
+{
   "Name": "GW2.Main_Win64_Retail",
+  "Bootflow": "PvZ2Bootflow",
   "DisplayName": "Plants vs Zombies™ Garden Warfare 2",
+  "HasDenuvoTicket": false,
   "InternalName": "pvz2",
   "TypeInfoSignature" : "48 8B 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 48 8D 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? E9",
   "HasStrippedTypeNames": false,

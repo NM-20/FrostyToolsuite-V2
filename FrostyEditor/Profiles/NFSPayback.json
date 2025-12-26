@@ -1,6 +1,8 @@
 {
   "Name": "NeedForSpeedPayback",
+  "Bootflow": "Nfs17Bootflow",
   "DisplayName": "Need for Speed™ Payback",
+  "HasDenuvoTicket": true,
   "InternalName": "nfs17",
   "TypeInfoSignature": "",
   "DataVersion": 20171110,

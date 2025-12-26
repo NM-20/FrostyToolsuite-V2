@@ -1,6 +1,8 @@
 {
   "Name": "NeedForSpeedUnbound",
+  "Bootflow": "NfsUnboundBootflow",
   "DisplayName": "Need for Speed™ Unbound",
+  "HasDenuvoTicket": true,
   "InternalName": "nfsunbound",
   "TypeInfoSignature": "48 39 1D ?? ?? ?? ?? ?? ?? 48 8b 43 10",
   "DataVersion": 20221202,

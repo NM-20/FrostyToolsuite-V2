@@ -7,21 +7,18 @@ namespace FrostyEditor;
 
 public class ViewLocator : IDataTemplate
 {
-    public Control? Build(object? data)
+
+    public Control? Build(object? param)
     {
-        if (data is null)
-        {
+        if (param is null)
             return null;
-        }
 
-        string name = data.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
-        Type? type = Type.GetType(name);
+        var name = param.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
+        var type = Type.GetType(name);
 
-        if (type is not null)
+        if (type != null)
         {
-            Control control = (Control)Activator.CreateInstance(type)!;
-            control.DataContext = data;
-            return control;
+            return (Control)Activator.CreateInstance(type)!;
         }
 
         return new TextBlock { Text = "Not Found: " + name };

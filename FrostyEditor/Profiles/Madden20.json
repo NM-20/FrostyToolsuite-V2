@@ -1,5 +1,6 @@
 {
   "Name": "Madden20",
+  "Bootflow": "Madden20Bootflow",
   "DisplayName": "Madden NFL 20™",
   "InternalName": "madden20",
   "TypeInfoSignature": "",

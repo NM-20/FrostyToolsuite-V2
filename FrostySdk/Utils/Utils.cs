@@ -9,17 +9,35 @@ namespace Frosty.Sdk.Utils;
 
 public static class Utils
 {
+    private const uint c_fnvOffsetBasis = 5381;
+    private const uint c_fnvPrime       = 33;
+
     public static string BaseDirectory { get; set; } = string.Empty;
+
+    public static int HashBuffer(Span<byte> buffer, int length = -1)
+    {
+        /*
+         * We'll be mainly using this for calculating memory hashes in our pattern scanner.
+         * For strings, prefer `HashString`.
+         */
+        length =
+            (length is -1 ? buffer.Length : length);
+
+        uint hash = c_fnvOffsetBasis;
+        for (int i = 0; i < length; i++)
+        {
+            hash = ((hash * c_fnvPrime) ^ buffer[i]);
+        }
+
+        return (int)(hash);
+    }
 
     public static int HashString(string value, bool toLower = false)
     {
-        const uint kOffset = 5381;
-        const uint kPrime = 33;
-
-        uint hash = kOffset;
+        uint hash = c_fnvOffsetBasis;
         for (int i = 0; i < value.Length; i++)
         {
-            hash = (hash * kPrime) ^ (byte)(toLower ? char.ToLower(value[i]) : value[i]);
+            hash = (hash * c_fnvPrime) ^ (byte)(toLower ? char.ToLower(value[i]) : value[i]);
         }
 
         return (int)hash;
@@ -27,14 +45,11 @@ public static class Utils
 
     public static int HashStringA(string value, bool toLower = false)
     {
-        const uint kOffset = 5381;
-        const uint kPrime = 33;
-
-        uint hash = kOffset;
+        uint hash = c_fnvOffsetBasis;
         for (int i = 0; i < value.Length; i++)
         {
             hash ^= (byte)(toLower ? char.ToLower(value[i]) : value[i]);
-            hash *= kPrime;
+            hash *= c_fnvPrime;
         }
 
         return (int)hash;

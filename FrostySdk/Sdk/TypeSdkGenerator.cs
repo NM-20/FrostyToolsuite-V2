@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -29,28 +29,7 @@ public class TypeSdkGenerator
 
         if (!string.IsNullOrEmpty(ProfilesLibrary.TypeInfoSignature))
         {
-            offset = reader.ScanPatter(ProfilesLibrary.TypeInfoSignature);
-        }
-        else
-        {
-            // TODO: remove this once all games have their correct pattern
-            string[] patterns =
-            {
-                "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ?? C3",
-                "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ??",
-                "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ?? 48 ?? ?? C3",
-                "48 8b 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 48 8d 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? E9",
-                "48 39 1D ?? ?? ?? ?? ?? ?? 48 8b 43 10", // new games
-            };
-            foreach (string sig in patterns)
-            {
-                offset = reader.ScanPatter(sig);
-                if (offset != nint.Zero)
-                {
-                    FrostyLogger.Logger?.LogInfo($"No TypeInfoSig set, found offset for \"{sig}\"");
-                    break;
-                }
-            }
+            offset = reader.ScanPattern(ProfilesLibrary.TypeInfoSignature);
         }
 
         if (offset == nint.Zero)
@@ -66,7 +45,7 @@ public class TypeSdkGenerator
 
     public bool DumpTypes(Process process)
     {
-        MemoryReader reader = new(process);
+        using MemoryReader reader = new(new ProcessStream(process));
         long typeInfoOffset = FindTypeInfoOffset(reader);
         if (typeInfoOffset == -1)
         {

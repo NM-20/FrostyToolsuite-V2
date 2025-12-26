@@ -1,6 +1,8 @@
 {
   "Name": "bf1",
+  "Bootflow": "Bf1Bootflow",
   "DisplayName": "Battlefield™ 1",
+  "HasDenuvoTicket": true,
   "InternalName": "bf1",
   "TypeInfoSignature": "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ?? C3",
   "DataVersion": 20161012,

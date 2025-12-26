@@ -1,6 +1,8 @@
-﻿{
+{
   "Name": "MirrorsEdgeCatalyst",
+  "Bootflow": "MirrorsEdgeBootflow",
   "DisplayName": "Mirror's Edge™ Catalyst",
+  "HasDenuvoTicket": false,
   "InternalName": "mirrorsedge",
   "TypeInfoSignature" : "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ?? C3",
   "HasStrippedTypeNames": false,

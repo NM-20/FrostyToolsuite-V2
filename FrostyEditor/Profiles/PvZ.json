@@ -1,6 +1,8 @@
 {
   "Name": "PVZ.Main_Win64_Retail",
+  "Bootflow": "PvZ1Bootflow",
   "DisplayName": "Plants vs Zombies™ Garden Warfare",
+  "HasDenuvoTicket": false,
   "InternalName": "pvz1",
   "TypeInfoSignature": "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ?? C3",
   "DataVersion": 20140623,

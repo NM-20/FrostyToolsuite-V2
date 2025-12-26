@@ -1,6 +1,8 @@
 {
   "Name": "starwarsbattlefront",
+  "Bootflow": "StarWarsBootflow",
   "DisplayName": "STAR WARS™ Battlefront™",
+  "HasDenuvoTicket": false,
   "InternalName": "starwars",
   "TypeInfoSignature": "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ?? 48 ?? ?? C3",
   "DataVersion": 20151117,

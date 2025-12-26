@@ -1,6 +1,8 @@
 {
   "Name": "bfv",
+  "Bootflow": "BfvBootflow",
   "DisplayName": "Battlefield™ V",
+  "HasDenuvoTicket": true,
   "InternalName": "bfv",
   "TypeInfoSignature": "48 8b 05 ?? ?? ?? ?? 48 89 41 08 48 89 0d ?? ?? ?? ?? 48 ?? ?? C3",
   "DataVersion": 20181119,
