@@ -21,9 +21,7 @@ internal unsafe sealed class NfsUnboundBootflow : BootflowBase
         bool result = m_awcFixupExeDetour!.OriginalFunction(unknown1, unknown2, unknown3, unknown4, unknown5,
             unknown6);
 
-        const string pattern =
-            "40 55 48 8D AC 24 70 FF FF FF 48 81 EC 90 01 00 00 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 85 80 " +
-            "00 00 00 48 8B 05";
+        const string pattern = "4C 8B DC 48 81 EC 98 00 00 00 49 C7";
 
         /*
          * The executable will be unpacked at this point, so we'll be able to scan within the executable. We
