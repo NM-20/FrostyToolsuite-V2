@@ -16,6 +16,14 @@
     <ReloadedILLink>false</ReloadedILLink>
   </PropertyGroup>
 
+  <PropertyGroup Label="Avalonia">
+    <AvaloniaUseCompiledBindingsByDefault>True</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaXaml Remove="Languages\en-US.axaml" />
+  </ItemGroup>
+
   <ItemGroup>
     <ReloadedLinkRoots Include="FrostyEditor" />
     <!-- Add assemblies to be trimmed. You might need to add their dependencies too!  -->
@@ -77,6 +85,7 @@
     <Content Include="ModConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Languages\en-US.axaml" />
     <EmbeddedResource Include="Profiles\Anthem.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -192,11 +201,10 @@
     <PackageReference Include="Avalonia.Desktop" Version="11.3.10" />
     <PackageReference Include="Avalonia.Diagnostics" Version="11.3.10" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.10" />
-    <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.3.10" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.10" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="MessageBox.Avalonia" Version="3.3.1" />
-    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.3" />
+    <PackageReference Include="MessageBox.Avalonia" Version="3.3.1.1" />
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.1" />
     <PackageReference Include="Reloaded.Mod.Interfaces" Version="2.4.0" ExcludeAssets="runtime" />
     <PackageReference Include="Reloaded.SharedLib.Hooks" Version="1.9.0" />
     <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="11.3.6.2" />
@@ -206,6 +214,7 @@
     <ProjectReference Include="..\FrostyModSupport\FrostyModSupport.csproj" />
     <ProjectReference Include="..\FrostySdk\FrostySdk.csproj" />
     <ProjectReference Include="..\FrostyTypeSdkGenerator\FrostyTypeSdkGenerator\FrostyTypeSdkGenerator.csproj" />
+    <ProjectReference Include="..\FrostyUi\FrostyUi.csproj" />
   </ItemGroup>
 
 </Project>

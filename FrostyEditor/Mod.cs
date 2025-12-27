@@ -7,6 +7,7 @@ using FrostyEditor.Utilities;
 using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
 using Reloaded.Mod.Interfaces.Internal;
+using System.Reflection;
 
 #if DEBUG
 using System.Diagnostics;
@@ -56,7 +57,52 @@ public class Mod : ModBase // <= Do not Remove.
     /// </summary>
     public PatternScanner PatternScanner { get; private set; }
 
-    public unsafe Mod(ModContext context)
+    private void WriteProfilesIfMissing()
+    {
+        /* 
+         * Rather than only checking if the directory is missing, we'll check if each individual file is
+         * missing.
+         */
+        string directory = Path.Combine(Utils.BaseDirectory, "Profiles");
+        Directory.CreateDirectory(directory);
+        Assembly assembly = Assembly.GetExecutingAssembly();
+
+        foreach (string current in assembly.GetManifestResourceNames())
+        {
+            /* 
+             * We have resources that aren't profiles (i.e. languages), so we will want to filter those
+             * out. 
+             */
+            if (!current.StartsWith("FrostyEditor.Profiles"))
+            {
+                continue;
+            }
+
+            ReadOnlySpan<char> view =
+                current.AsSpan(0, (current.Length - ".json".Length));
+
+            view = view.Slice(view.LastIndexOf('.') + ".".Length);
+
+            string filename = view.ToString();
+            string path = Path.Combine(directory, $"{filename}.json");
+
+            if (File.Exists(path))
+            {
+                continue;
+            }
+
+            /*
+             * We've found a missing file, so we will want to create a manifest resource stream for the
+             * profile and export its JSON.
+             */
+            using StreamReader reader = new(assembly.GetManifestResourceStream(current)!);
+            using StreamWriter writer = new(new FileStream(path, FileMode.Create, FileAccess.Write));
+
+            writer.Write(reader.ReadToEnd());
+        }
+    }
+
+    public Mod(ModContext context)
     {
         /*
          * This will essentially be our entrypoint for the editor. Any core initialization must go here,
@@ -89,6 +135,12 @@ public class Mod : ModBase // <= Do not Remove.
          * executable from its API to initialize `ProfilesLibrary`.
          */
         IApplicationConfigV1 configuration = ModLoader.GetAppConfig();
+
+        /*
+         * In the event that the profile JSONs aren't on the disk, we've got internal copies that we'll
+         * write to ensure the editor can boot up.
+         */
+        WriteProfilesIfMissing();
 
         ProfilesLibrary.Initialize(Path.GetFileNameWithoutExtension(
             configuration.AppId));

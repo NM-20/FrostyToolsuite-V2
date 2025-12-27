@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 18
-VisualStudioVersion = 18.1.11312.151 d18.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36811.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrostyCli", "FrostyCli\FrostyCli.csproj", "{990663D6-619A-46C3-ADFA-68208FF24465}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrostyTypeSdkGenerator.Example", "FrostyTypeSdkGenerator\FrostyTypeSdkGenerator.Example\FrostyTypeSdkGenerator.Example.csproj", "{447CC684-05A6-49FE-821D-A0BF0602614C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrostyEditor", "FrostyEditor\FrostyEditor.csproj", "{4608374D-7B14-475F-9666-DBCD9D077C0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrostyUi", "FrostyUi\FrostyUi.csproj", "{642E566F-1AE0-48DD-AFE3-A13854125F0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{4608374D-7B14-475F-9666-DBCD9D077C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4608374D-7B14-475F-9666-DBCD9D077C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4608374D-7B14-475F-9666-DBCD9D077C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{642E566F-1AE0-48DD-AFE3-A13854125F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{642E566F-1AE0-48DD-AFE3-A13854125F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{642E566F-1AE0-48DD-AFE3-A13854125F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{642E566F-1AE0-48DD-AFE3-A13854125F0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -27,7 +27,6 @@ internal static class BootflowManager
         Type? bootflow = Type.GetType($"FrostyEditor.Bootflow.{ProfilesLibrary.Bootflow}");
         if (bootflow is null)
         {
-            /* TODO: Implement a `LocaleManager`, then use it here to display the appropriate error message. */
             return;
         }
 
