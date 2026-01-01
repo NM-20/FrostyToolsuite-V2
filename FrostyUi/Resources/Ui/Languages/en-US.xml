@@ -5,15 +5,11 @@
         <Line/>
         <Line>{1}</Line>
     </String>
-    
-    <String Identifier="Str_Ui_RuntimeResourceIncludeExternalException">
-        <Line>An exception occurred while loading the external resource "{0}":</Line>
+    <String Identifier="Str_Ui_RuntimeResourceIncludeLoadException">
+        <Line>An exception occurred while loading the resource "{0}":</Line>
         <Line/>
         <Line>{1}</Line>
     </String>
-    <String Identifier="Str_Ui_RuntimeResourceIncludeInternalException">
-        <Line>An exception occurred while loading the internal resource "{0}":</Line>
-        <Line/>
-        <Line>{1}</Line>
-    </String>
+
+    <String Identifier="Str_Ui_ViewNotFound">The `View` "{0}" could not be found!</String>
 </LanguageDefinition>

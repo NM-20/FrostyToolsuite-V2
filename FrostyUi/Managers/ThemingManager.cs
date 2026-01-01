@@ -1,7 +1,6 @@
-using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Platform;
-using Avalonia.Styling;
 using Frosty.Sdk.Utils;
 using Frosty.Ui.Exceptions;
 using System.Reflection;
@@ -9,8 +8,8 @@ using System.Reflection;
 namespace Frosty.Ui.Managers;
 
 /// <summary>
-/// Describes a theme source that the <see cref="ThemingManager"/> can pull from for resources, i.e. styles,
-/// icons, etc.
+/// Describes a theme source that the <see cref="ThemingManager"/> can pull from for resources, i.e. icons,
+/// resources, etc.
 /// </summary>
 /// <param name="External">
 /// The external source to be pulled from. If this is `null` or empty, <see cref="ThemingManager"/> will
@@ -28,7 +27,7 @@ public record struct ThemingSource(string? External, Uri Internal)
          * Before anything else, we will need to format our internal URI, as we'll return it when `External`
          * is empty.
          */
-        string filename = $"{theme}/Styles.axaml";
+        string filename = $"{theme}/Theme.axaml";
         string @internal = Path.Combine(Internal.AbsoluteUri, filename);
 
         if (string.IsNullOrEmpty(External))
@@ -59,15 +58,16 @@ public record struct ThemingSource(string? External, Uri Internal)
 
 /// <summary>
 /// Encapsulates the <see cref="EventArgs"/> of a <see cref="ThemeChangedEventHandler"/>, i.e. the previous
-/// theme, the new theme, and its styles.
+/// theme, the new theme, and its resources.
 /// </summary>
 /// <param name="previous">The previous theme.</param>
 /// <param name="current">The current theme, that is, the new theme.</param>
-/// <param name="styles">
-/// An <see cref="IEnumerable{T}"/> containing the new styles associated with the <see cref="current"/>
-/// locale.
+/// <param name="resources">
+/// An <see cref="IEnumerable{IResourceProvider}"/> that contains all resources corresponding with the new
+/// (<see cref="current"/>) theme.
 /// </param>
-public class ThemeChangedEventArgs(string? previous, string? current, IEnumerable<IStyle> styles) : EventArgs
+public class ThemeChangedEventArgs(string? previous, string? current, IEnumerable<IResourceProvider> resources) :
+    EventArgs
 {
     /// <summary>
     /// The current theme, that is, the new theme.
@@ -80,10 +80,10 @@ public class ThemeChangedEventArgs(string? previous, string? current, IEnumerabl
     public string? Previous => previous;
 
     /// <summary>
-    /// An <see cref="IEnumerable{T}"/> containing the new styles associated with the <see cref="Current"/>
-    /// locale.
+    /// An <see cref="IEnumerable{IResourceProvider}"/> that contains all resources corresponding with the new
+    /// (<see cref="current"/>) theme.
     /// </summary>
-    public IEnumerable<IStyle> Styles => styles;
+    public IEnumerable<IResourceProvider> Resources => resources;
 }
 
 /// <summary>
@@ -95,7 +95,7 @@ public delegate void ThemeChangedEventHandler(object? sender, ThemeChangedEventA
 
 /// <summary>
 /// Provides theming functionality for applications. Allows for conditional loading of assets, such as icons
-/// and styles, based on a particular theme identifier.
+/// and resources, based on a particular theme identifier.
 /// </summary>
 public class ThemingManager
 {
@@ -127,7 +127,7 @@ public class ThemingManager
     private ThemingManager()
     {}
 
-    private static bool DoesInternalStyleExist(Uri @internal)
+    private static bool DoesInternalResourceProviderExist(Uri @internal)
     {
         Type? resources = AssetLoader.GetAssembly(@internal)?.GetType("CompiledAvaloniaXaml.!AvaloniaResources");
         if (resources is null)
@@ -233,7 +233,7 @@ public class ThemingManager
         }
     }
 
-    private static Styles? ReadExternalStyles(string external)
+    private static IResourceProvider? ReadExternalResourceProvider(string external)
     {
         object loaded;
         try
@@ -246,27 +246,28 @@ public class ThemingManager
             throw new ThemingManagerExternalLoadException(external, exception);
         }
 
-        if (loaded is not Styles styles)
+        if (loaded is not IResourceProvider provider)
         {
             return null;
         }
         else
         {
             /*
-             * We've got a loaded `Styles` instance, which we can append to a `Styles` collection as needed.
+             * We've got a loaded `IResourceProvider` instance, which we can append to a `IResourceProvider`
+             * collection as needed.
              */
-            return styles;
+            return provider;
         }
     }
 
-    private static Styles? ReadInternalStyles(string @internal)
+    private static IResourceProvider? ReadInternalResourceProvider(string @internal)
     {
         /*
-         * We will need a URI for both checking if the styles exist, as well as loading them in our program.
+         * We will need a URI for both checking if providers exist, as well as loading them in our program.
          */
         Uri uri = new(@internal);
 
-        if (!DoesInternalStyleExist(uri))
+        if (!DoesInternalResourceProviderExist(uri))
         {
             return null;
         }
@@ -281,30 +282,22 @@ public class ThemingManager
             throw new ThemingManagerInternalLoadException(@internal, exception);
         }
 
-        if (loaded is not Styles styles)
+        if (loaded is not IResourceProvider provider)
         {
             return null;
         }
         else
         {
             /*
-             * We've got a loaded `Styles` instance, which we can append to a `Styles` collection as needed.
+             * We've got a loaded `IResourceProvider` instance, which we can append to a `IResourceProvider`
+             * collection as needed.
              */
-            return styles;
+            return provider;
         }
     }
 
-    private static Styles? ReadStyles(string source)
-    {
-        if (File.Exists(source))
-        {
-            return ReadExternalStyles(source);
-        }
-        else
-        {
-            return ReadInternalStyles(source);
-        }
-    }
+    private static IResourceProvider? ReadResourceProvider(string source) =>
+        (File.Exists(source) ? ReadExternalResourceProvider(source) : ReadInternalResourceProvider(source));
 
     /// <summary>
     /// Appends a <see cref="ThemingSource"/> to the <see cref="ThemingManager"/>'s tracked sources if an
@@ -387,7 +380,7 @@ public class ThemingManager
     }
 
     /// <summary>
-    /// Refreshes the <see cref="CurrentTheme"/> to account for potential newly added <see cref="m_sources"/>.
+    /// Refreshes the <see cref="CurrentTheme"/> to account for potential newly added sources.
     /// </summary>
     public void Refresh() => SwitchTheme(CurrentTheme);
 
@@ -406,13 +399,9 @@ public class ThemingManager
     /// <param name="theme">The name of the theme to switch to.</param>
     public void SwitchTheme(string? theme)
     {
-        /*
-         * Other assemblies (i.e. plugins) are only loaded when the editor boots up, which will happen after
-         * `ThemeManager` has been initialized. We can assume `s_styles` is assigned here.
-         */
         string? previous = CurrentTheme;
         CurrentTheme = theme;
-        Styles styles = new();
+        List<IResourceProvider> resources = new();
 
         if (theme is not null)
         {
@@ -422,8 +411,8 @@ public class ThemingManager
                  * Propagate the rest of loading to the individual `ThemingSource` instances. We'll be going
                  * through each `ThemingSource`, as they might contain parts of the whole theme.
                  */
-                Styles? loaded =
-                    (ReadStyles(current.GetAvailableSource(theme)) ?? ReadStyles(current.GetAvailableSource("Default")));
+                IResourceProvider? loaded = (ReadResourceProvider(current.GetAvailableSource(theme)) ??
+                    ReadResourceProvider(current.GetAvailableSource("Default")));
 
                 /*
                  * `Default` should work for our assemblies, but it might not for plugin assemblies. We will
@@ -435,17 +424,13 @@ public class ThemingManager
                 }
 
                 /*
-                 * If we have got a valid, style, add it to our collection. This takes effect immediately as
-                 * long as we're tied to the correct application.
+                 * If we have an `IResourceProvider`, add it to our collection. This will work as long as we
+                 * have registered `ThemeChanged` handlers.
                  */
-                styles.Add(loaded);
+                resources.Add(loaded);
             }
         }
 
-        /*
-         * We won't really be using this ourselves, though it may be utilized within plugin implementations,
-         * etc.
-         */
-        ThemeChanged?.Invoke(null, new ThemeChangedEventArgs(previous, theme, styles));
+        ThemeChanged?.Invoke(null, new ThemeChangedEventArgs(previous, theme, resources));
     }
 }

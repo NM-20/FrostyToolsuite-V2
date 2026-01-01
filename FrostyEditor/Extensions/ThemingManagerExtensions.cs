@@ -22,8 +22,8 @@ internal static class ThemingManagerExtensions
         catch (ThemingManagerExternalLoadException external)
         {
             string message =
-                string.Format(LocalizationManager.Instance.GetString("Str_Editor_ThemingManagerExternalException"), theme,
-                external);
+                string.Format(LocalizationManager.Instance.GetString("Str_Editor_ThemingManagerExternalException"),
+                external.Asset, external.InnerException);
 
             /*
              * TODO: Introduce a `MessageBoxManager` that has a theme-agnostic style option so that we can use it instead of
@@ -34,8 +34,8 @@ internal static class ThemingManagerExtensions
         catch (ThemingManagerInternalLoadException @internal)
         {
             string message =
-                string.Format(LocalizationManager.Instance.GetString("Str_Editor_ThemingManagerInternalException"), theme,
-                @internal);
+                string.Format(LocalizationManager.Instance.GetString("Str_Editor_ThemingManagerInternalException"),
+                @internal.Asset, @internal.InnerException);
 
             /*
              * TODO: Introduce a `MessageBoxManager` that has a theme-agnostic style option so that we can use it instead of

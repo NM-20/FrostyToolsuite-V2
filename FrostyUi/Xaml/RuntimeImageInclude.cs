@@ -40,8 +40,7 @@ public abstract class RuntimeImageSource
 
     private object? GetExternal()
     {
-        string external = Path.Join(Utils.BaseDirectory,
-            (Source!.IsAbsoluteUri ? Source!.AbsolutePath : Source!.OriginalString));
+        string external = Path.Join(Utils.BaseDirectory, Source!.ToString());
 
         if (!File.Exists(external))
         {

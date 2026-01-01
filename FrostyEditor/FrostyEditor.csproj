@@ -37,9 +37,7 @@
     <None Remove="BuildLinked.ps1" />
     <None Remove="Reloaded.Trimming.targets" />
     <None Remove="Reloaded.Checks.targets" />
-    <None Remove="Resources\Editor\Languages\en-US.xml" />
-    <None Remove="Resources\Editor\Theming\Default\Images\ProgramIcon.ico" />
-    <None Remove="Resources\Editor\Theming\Default\Images\SVGs\Gear.svg" />
+    <None Remove="Resources\Editor\Theming\Default\Images\SVGs\ProgramLogo.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +45,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
     <AvaloniaResource Include="Resources\Editor\Theming\Default\Images\SVGs\Gear.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Editor\Theming\Default\Images\SVGs\ProgramLogo.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
   </ItemGroup>
@@ -84,9 +85,6 @@
 
   <ItemGroup>
     <AvaloniaXaml Include="Resources\Editor\Theming\Default\Images.axaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AvaloniaXaml>
-    <AvaloniaXaml Include="Resources\Editor\Theming\Default\Styles.axaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaXaml>
     <AvaloniaXaml Include="Resources\Editor\Theming\Default\Windows.axaml">

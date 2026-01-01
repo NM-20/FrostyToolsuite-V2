@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace FrostyEditor.Utilities;
 
-public enum ConfigScope
+internal enum ConfigScope
 {
     Global,
     Game,
@@ -11,7 +11,7 @@ public enum ConfigScope
 }
 
 // @todo: allow overrides of any option within game specific options (will be allowed via manual edits if people really want to)
-public static class Config
+internal static class Config
 {
     private class InternalConfig
     {

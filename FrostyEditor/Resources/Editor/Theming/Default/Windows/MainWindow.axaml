@@ -6,14 +6,14 @@
   <ControlTheme x:Key="{x:Type windows:MainWindow}"
                 TargetType="windows:MainWindow">
     <Setter Property="Icon"
-            Value="{DynamicResource Image_Global_ProgramIcon}"/>
+            Value="{StaticResource Image_Global_ProgramWindowIcon}"/>
     <Setter Property="Title"
             Value="{DynamicResource Str_Global_ProgramTitle}"/>
     <Setter Property="Template">
       <ControlTemplate>
-        <Grid>
-          <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Grid>
+        <ContentControl>
+          <vm:MainWindowViewModel/>
+        </ContentControl>
       </ControlTemplate>
     </Setter>
   </ControlTheme>

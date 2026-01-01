@@ -12,7 +12,7 @@ namespace Frosty.Ui.Xaml;
 /// </summary>
 public class RuntimeResourceInclude : ResourceProvider
 {
-    private ResourceProvider? m_provider;
+    private IResourceProvider? m_provider;
 
     public override bool HasResources =>
         (Loaded?.HasResources ?? false);
@@ -21,7 +21,7 @@ public class RuntimeResourceInclude : ResourceProvider
     /// The <see cref="RuntimeResourceInclude"/>'s resolved <see cref="ResourceDictionary"/>, which varies
     /// based on its <see cref="Source"/>.
     /// </summary>
-    public ResourceProvider? Loaded => GetResourceProvider();
+    public IResourceProvider? Loaded => GetResourceProvider();
 
     /// <summary>
     /// The location at which the <see cref="ResourceDictionary"/> is found. For both internal sources and
@@ -36,7 +36,16 @@ public class RuntimeResourceInclude : ResourceProvider
 
     private void InvalidateSource() => Source = null;
 
-    private ResourceProvider? LoadExternal(string path)
+    private void OnException(string source, Exception exception)
+    {
+        string message = string.Format(LocalizationManager.Instance.GetString("Str_Ui_RuntimeResourceIncludeLoadException"),
+            source, exception);
+        MessageBoxW(0, message, LocalizationManager.Instance.GetString("Str_Global_ProgramTitle"), (MB_ICONWARNING | MB_OK));
+
+        InvalidateSource();
+    }
+
+    private IResourceProvider? LoadExternal(string path)
     {
         /*
          * `AvaloniaRuntimeXamlLoader` can throw exceptions, so we'll want to ensure we are catching these
@@ -49,16 +58,11 @@ public class RuntimeResourceInclude : ResourceProvider
         }
         catch (XamlLoadException exception)
         {
-            string message = string.Format(LocalizationManager.Instance.GetString("Str_Ui_RuntimeResourceIncludeExternalException"),
-                path, exception);
-            MessageBoxW(0, message, LocalizationManager.Instance.GetString("Str_Global_ProgramTitle"), (MB_ICONWARNING | MB_OK));
-
-            InvalidateSource();
-
+            OnException(path, exception);
             return null;
         }
 
-        if (loaded is not ResourceProvider provider)
+        if (loaded is not IResourceProvider provider)
         {
             InvalidateSource();
             return null;
@@ -72,7 +76,7 @@ public class RuntimeResourceInclude : ResourceProvider
         return m_provider;
     }
 
-    private ResourceProvider? LoadInternal(Uri source)
+    private IResourceProvider? LoadInternal(Uri source)
     {
         /*
          * While internal exceptions aren't as likely, we'll ensure that we handle them just in case, i.e.
@@ -91,12 +95,7 @@ public class RuntimeResourceInclude : ResourceProvider
         }
         catch (XamlLoadException exception)
         {
-            string message = string.Format(LocalizationManager.Instance.GetString("Str_Ui_RuntimeResourceIncludeInternalException"),
-                source, exception);
-            MessageBoxW(0, message, LocalizationManager.Instance.GetString("Str_Global_ProgramTitle"), (MB_ICONWARNING | MB_OK));
-
-            InvalidateSource();
-
+            OnException(source.ToString(), exception);
             return null;
         }
 
@@ -114,7 +113,7 @@ public class RuntimeResourceInclude : ResourceProvider
         return m_provider;
     }
 
-    private ResourceProvider? GetResourceProvider()
+    private IResourceProvider? GetResourceProvider()
     {
         if (m_provider is not null)
         {
@@ -133,8 +132,7 @@ public class RuntimeResourceInclude : ResourceProvider
         /*
          * In the event that a provided URI is not absolute, `OriginalString` will net us a relative path
          */
-        string path = Path.Join(Utils.BaseDirectory, (Source.IsAbsoluteUri ? Source.AbsolutePath :
-            Source.OriginalString));
+        string path = Path.Join(Utils.BaseDirectory, Source.ToString());
 
         /*
          * Otherwise, we'll want to determine where the `ResourceDictionary` is located. If it's placed in
