@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageDefinition>
+    <String Identifier="Str_Global_ProgramTitle">Frosty Editor</String>
+    
+    <String Identifier="Str_Editor_ProfileNotFound">
+        <Line>A profile could not be found for the active game. Please ensure that the Profiles directory, along with its contents, exists in the editor's directory.</Line>
+        <Line/>
+        <Line>If all files are present, the active game may not be supported.</Line>
+    </String>
+    <String Identifier="Str_Editor_BootflowNotFound">A bootflow could not be found for the active game. Please ensure that the contents of the Profiles directory have not been corrupted.</String>
+
+    <String Identifier="Str_Editor_LocalizationManagerLoadException">
+        <Line>An exception occurred while loading the language "{0}":</Line>
+        <Line/>
+        <Line>{1}</Line>
+    </String>
+    
+    <String Identifier="Str_Editor_ThemingManagerExternalException">
+        <Line>An exception occurred while loading the external theming resource "{0}":</Line>
+        <Line/>
+        <Line>{1}</Line>
+    </String>
+    <String Identifier="Str_Editor_ThemingManagerInternalException">
+        <Line>An exception occurred while loading the internal theming resource "{0}":</Line>
+        <Line/>
+        <Line>{1}</Line>
+    </String>
+</LanguageDefinition>

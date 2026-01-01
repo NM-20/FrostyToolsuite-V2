@@ -62,14 +62,14 @@ internal unsafe sealed class Nfs16Bootflow : BootflowBase
 
     private int DetourWinMain(nint hInstance, nint hPrevInstance, nint lpCmdLine, int nShowCmd)
     {
-        m_context = new(hInstance, hPrevInstance, lpCmdLine, nShowCmd);
+        m_context = new WinMainContext(hInstance, hPrevInstance, lpCmdLine, nShowCmd);
         StartEditor();
         return Environment.ExitCode;
     }
 
-    public override void Initialize(IHook<NativeEntrypointFunction> hook)
+    public override void Initialize(IHook<NativeEntrypointFunction> detour)
     {
-        base.Initialize(hook);
+        base.Initialize(detour);
 
         /*
          * Reloaded injects before the executable entrypoint is called, so we'll need to load `Activation64`
@@ -99,7 +99,7 @@ internal unsafe sealed class Nfs16Bootflow : BootflowBase
          * This will call Activation's ordinal 100, which will check for `ContentId` and `EARtPLaunchCode`
          * in the environment before unpacking the executable.
          */
-        hook.OriginalFunction();
+        detour.OriginalFunction();
     }
 
     public override void StartGame()

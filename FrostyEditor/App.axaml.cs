@@ -1,16 +1,22 @@
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 using Frosty.Ui.Managers;
+using FrostyEditor.Extensions;
+using FrostyEditor.Utilities;
 using FrostyEditor.ViewModels;
-using FrostyEditor.Views;
-using System.Globalization;
+using FrostyEditor.Views.Windows;
 
 namespace FrostyEditor;
 
 public partial class App : Application
 {
+    private ResourceDictionary m_strings = new();
+    private Styles             m_styles  = new();
+
     /// <summary>
     /// The singleton instance of the <see cref="App"/> class. This should be preferred over <see cref="Application.Current"/>.
     /// </summary>
@@ -20,21 +26,46 @@ public partial class App : Application
     {
         AvaloniaXamlLoader.Load(this);
 
+        Resources.MergedDictionaries.Add(m_strings);
+        Resources.MergedDictionaries.Add(m_styles);
+
+        LocalizationManager.Instance.LocaleChanged += LocalizationManager_LocaleChanged;
+        LocalizationManager.Instance.EditorRefresh();
+
         /*
-         * Before we add any sources, we'll need to ensure that we initialize the `LocalizationManager`. This will create the
-         * `List` necessary for us to add.
+         * Next, we can initialize the `ThemingManager`, then populate its sources and switch to the user's configured theme.
          */
-        LocalizationManager.Initialize(Instance!);
+        ThemingManager.Instance.AddSource(new ThemingSource("Resources/Editor/Theming",
+            new Uri("avares://FrostyEditor/Resources/Editor/Theming")));
 
-        LocalizationSource source = new("Languages",
-            new LocalizationSource.InternalSource(typeof(App).Assembly, "FrostyEditor.Languages"));
-
-        LocalizationManager.Sources!.Add(source);
-
-        /* Once we've added a source, we can then switch the locale to the current UI culture. This isn't guaranteed to work,
-         * but `LocalizationManager` will automatically handle a fallback for us.
+        /*
+         * TODO: As with `LocalizationManager`, try to isolate doing this to the responsibility of the assemblies themselves.
          */
-        LocalizationManager.SwitchLocale(CultureInfo.CurrentUICulture.Name);
+        ThemingManager.Instance.AddSource(new ThemingSource("Resources/Ui/Theming", new
+            Uri("avares://FrostyUi/Resources/Ui/Theming")));
+
+        ThemingManager.Instance.ThemeChanged += ThemingManager_ThemeChanged;
+
+        /*
+         * Finally, we can switch to the theme that the user has selected. Given that it's user input, this may not work due
+         * to i.e. a theme being deleted manually.
+         */
+        ThemingManager.Instance.EditorSwitchTheme(Config.Get("SelectedTheme", "Default", ConfigScope.Game));
+    }
+
+    private void LocalizationManager_LocaleChanged(object? sender, LocaleChangedEventArgs e)
+    {
+        m_strings.Clear();
+        foreach (KeyValuePair<string, string> current in e.Strings)
+        {
+            m_strings.Add(current.Key, current.Value);
+        }
+    }
+
+    private void ThemingManager_ThemeChanged(object? sender, ThemeChangedEventArgs e)
+    {
+        m_styles.Clear();
+        m_styles.AddRange(e.Styles);
     }
 
     public override void OnFrameworkInitializationCompleted()

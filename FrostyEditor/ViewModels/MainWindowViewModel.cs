@@ -1,4 +1,4 @@
-﻿namespace FrostyEditor.ViewModels;
+namespace FrostyEditor.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {

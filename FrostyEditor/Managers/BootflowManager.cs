@@ -1,4 +1,5 @@
 using Frosty.Sdk;
+using Frosty.Ui.Managers;
 using FrostyEditor.Bootflow;
 using FrostyEditor.Native;
 using Reloaded.Hooks.Definitions;
@@ -27,6 +28,10 @@ internal static class BootflowManager
         Type? bootflow = Type.GetType($"FrostyEditor.Bootflow.{ProfilesLibrary.Bootflow}");
         if (bootflow is null)
         {
+            MessageBoxW(0, LocalizationManager.Instance.GetString(
+                "Str_Editor_BootflowNotFound"), LocalizationManager.Instance.GetString("Str_Global_ProgramTitle"),
+                (MB_ICONERROR | MB_OK));
+
             return;
         }
 
@@ -40,7 +45,7 @@ internal static class BootflowManager
         Bootflow.Initialize(s_detour!);
     }
 
-    public unsafe static void Initialize()
+    public static unsafe void Initialize()
     {
         /*
          * Hooking Activation by itself wouldn't really allow the editor to be booted without an open launcher,

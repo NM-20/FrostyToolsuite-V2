@@ -1,0 +1,7 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:xaml="using:Frosty.Ui.Xaml">
+  <ResourceDictionary.MergedDictionaries>
+    <xaml:RuntimeResourceInclude Source="avares://FrostyEditor/Resources/Editor/Theming/Default/Windows/MainWindow.axaml"/>
+  </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

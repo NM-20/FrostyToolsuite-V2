@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageDefinition>
+    <String Identifier="Str_Ui_RuntimeImageSourceLoadException">
+        <Line>An exception occurred while loading the image resource with key "{0}":</Line>
+        <Line/>
+        <Line>{1}</Line>
+    </String>
+    
+    <String Identifier="Str_Ui_RuntimeResourceIncludeExternalException">
+        <Line>An exception occurred while loading the external resource "{0}":</Line>
+        <Line/>
+        <Line>{1}</Line>
+    </String>
+    <String Identifier="Str_Ui_RuntimeResourceIncludeInternalException">
+        <Line>An exception occurred while loading the internal resource "{0}":</Line>
+        <Line/>
+        <Line>{1}</Line>
+    </String>
+</LanguageDefinition>

@@ -26,6 +26,8 @@ internal unsafe abstract class BootflowBase
     /// </summary>
     public delegate void NativeEntrypointFunction();
 
+    protected virtual string ActivationPath => "Core\\Activation64.dll";
+
     // Avalonia configuration, don't remove; also used by visual designer.
     private static AppBuilder BuildAvaloniaApp() =>
         AppBuilder.Configure<App>().
@@ -40,11 +42,9 @@ internal unsafe abstract class BootflowBase
     protected void LoadActivation()
     {
         IApplicationConfigV1 configuration = Mod.Instance!.ModLoader.GetAppConfig();
-        NativeLibrary.Load(Path.Combine(
+        NativeLibrary.Load(Path.Join(
             Path.GetDirectoryName(configuration.AppLocation)!, ActivationPath));
     }
-
-    protected virtual string ActivationPath => "Core\\Activation64.dll";
 
     /// <summary>
     /// Calls the original `WinMain` on a separate thread, effectively starting
@@ -69,7 +69,10 @@ internal unsafe abstract class BootflowBase
     /// <summary>
     /// Applies the necessary changes to the game executable for Frosty to boot.
     /// </summary>
-    public virtual void Initialize(IHook<NativeEntrypointFunction> hook)
+    /// <param name="detour">
+    /// The hook on the <see cref="NativeEntrypointFunction"/> to callback into.
+    /// </param>
+    public virtual void Initialize(IHook<NativeEntrypointFunction> detour)
     {
         /*
          * While we encourage the injected workflow for the games supporting it,

@@ -1,13 +1,15 @@
 using Frosty.Sdk;
 using Frosty.Sdk.Sdk;
 using Frosty.Sdk.Utils;
+using Frosty.Ui.Managers;
 using FrostyEditor.Managers;
 using FrostyEditor.Template;
 using FrostyEditor.Utilities;
 using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
 using Reloaded.Mod.Interfaces.Internal;
-using System.Reflection;
+using System.Globalization;
+using FrostyEditor.Extensions;
 
 #if DEBUG
 using System.Diagnostics;
@@ -21,7 +23,8 @@ namespace FrostyEditor;
 public class Mod : ModBase // <= Do not Remove.
 {
     /// <summary>
-    /// The primary instance that represents the injected Frosty Editor. Access this for hooking, etc.
+    /// The primary <see cref="Mod"/> instance that represents the injected Frosty Editor. Access this for
+    /// hooking, etc.
     /// </summary>
     public static Mod? Instance { get; private set; }
 
@@ -57,51 +60,6 @@ public class Mod : ModBase // <= Do not Remove.
     /// </summary>
     public PatternScanner PatternScanner { get; private set; }
 
-    private void WriteProfilesIfMissing()
-    {
-        /* 
-         * Rather than only checking if the directory is missing, we'll check if each individual file is
-         * missing.
-         */
-        string directory = Path.Combine(Utils.BaseDirectory, "Profiles");
-        Directory.CreateDirectory(directory);
-        Assembly assembly = Assembly.GetExecutingAssembly();
-
-        foreach (string current in assembly.GetManifestResourceNames())
-        {
-            /* 
-             * We have resources that aren't profiles (i.e. languages), so we will want to filter those
-             * out. 
-             */
-            if (!current.StartsWith("FrostyEditor.Profiles"))
-            {
-                continue;
-            }
-
-            ReadOnlySpan<char> view =
-                current.AsSpan(0, (current.Length - ".json".Length));
-
-            view = view.Slice(view.LastIndexOf('.') + ".".Length);
-
-            string filename = view.ToString();
-            string path = Path.Combine(directory, $"{filename}.json");
-
-            if (File.Exists(path))
-            {
-                continue;
-            }
-
-            /*
-             * We've found a missing file, so we will want to create a manifest resource stream for the
-             * profile and export its JSON.
-             */
-            using StreamReader reader = new(assembly.GetManifestResourceStream(current)!);
-            using StreamWriter writer = new(new FileStream(path, FileMode.Create, FileAccess.Write));
-
-            writer.Write(reader.ReadToEnd());
-        }
-    }
-
     public Mod(ModContext context)
     {
         /*
@@ -128,7 +86,40 @@ public class Mod : ModBase // <= Do not Remove.
         // If you want to implement e.g. unload support in your mod,
         // and some other neat features, override the methods in ModBase.
 
+        /*
+         * Setting this is essentially a prerequisite to the entire bootflow, so we will set it as early
+         * as we can.
+         */
         Utils.BaseDirectory = ModLoader.GetDirectoryForModId(ModConfig.ModId);
+
+        Config.Load(Path.Combine(Utils.BaseDirectory, "editor_config.json"));
+
+        /*
+         * We're aiming to have localization as early as possible, so we will initialize it in our ctor.
+         */
+        LocalizationSource source = new(Path.Combine(Utils.BaseDirectory, "Resources/Editor/Languages"),
+            new LocalizationSource.InternalSource(
+            typeof(App).Assembly, "FrostyEditor.Resources.Editor.Languages"));
+
+        LocalizationManager.Instance.AddSource(source);
+
+        /*
+         * TODO: Leave the responsibility for registering localization up to the assemblies themselves.
+         */
+        source = new("Resources/Ui/Languages", new LocalizationSource.InternalSource(
+            typeof(LocalizationManager).Assembly, "Frosty.Ui.Resources.Ui.Languages"));
+
+        LocalizationManager.Instance.AddSource(source);
+
+        /* 
+         * Once we've got out sources, we can then switch over to the user's selected theme. By default,
+         * we use the current UI culture to detect a default language.
+         */
+        LocalizationManager.Instance.EditorSwitchLocale(
+            Config.Get("SelectedLanguage", CultureInfo.CurrentUICulture.Name, ConfigScope.Global));
+
+        PatternScanner.Initialize();
+        PatternScanner = new PatternScanner();
 
         /*
          * Game selection is a bit different from V1: it's done through Reloaded. We'll need to grab the
@@ -136,20 +127,15 @@ public class Mod : ModBase // <= Do not Remove.
          */
         IApplicationConfigV1 configuration = ModLoader.GetAppConfig();
 
-        /*
-         * In the event that the profile JSONs aren't on the disk, we've got internal copies that we'll
-         * write to ensure the editor can boot up.
-         */
-        WriteProfilesIfMissing();
+        if (!ProfilesLibrary.Initialize(Path.GetFileNameWithoutExtension(
+            configuration.AppId)))
+        {
+            MessageBoxW(0, LocalizationManager.Instance.GetString("Str_Editor_ProfileNotFound"),
+                LocalizationManager.Instance.GetString("Str_Editor_ProgramTitle"), (MB_ICONERROR | MB_OK));
 
-        ProfilesLibrary.Initialize(Path.GetFileNameWithoutExtension(
-            configuration.AppId));
-        Config.Load(Path.Combine(Utils.BaseDirectory, "editor_config.json"));
-
-        PatternScanner.Initialize();
-
-        PatternScanner =
-            new PatternScanner();
+            const int ERROR_FILE_NOT_FOUND = 2;
+            Environment.Exit(ERROR_FILE_NOT_FOUND);
+        }
 
         /* 
          * For the more game-specific procedures, these will be handled within their own unique bootflow
@@ -157,7 +143,6 @@ public class Mod : ModBase // <= Do not Remove.
          */
         BootflowManager.Initialize();
     }
-
 
     #region For Exports, Serialization etc.
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
