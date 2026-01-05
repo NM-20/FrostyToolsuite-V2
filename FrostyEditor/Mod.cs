@@ -97,7 +97,7 @@ public class Mod : ModBase // <= Do not Remove.
         /*
          * We're aiming to have localization as early as possible, so we will initialize it in our ctor.
          */
-        LocalizationSource source = new(Path.Combine(Utils.BaseDirectory, "Resources/Editor/Languages"),
+        LocalizationSource source = new("Resources/Editor/Languages",
             new LocalizationSource.InternalSource(
             typeof(App).Assembly, "FrostyEditor.Resources.Editor.Languages"));
 
@@ -130,7 +130,7 @@ public class Mod : ModBase // <= Do not Remove.
         if (!ProfilesLibrary.Initialize(Path.GetFileNameWithoutExtension(
             configuration.AppId)))
         {
-            MessageBoxW(0, LocalizationManager.Instance.GetString("Str_Editor_ProfileNotFound"),
+            MessageBoxW(0, LocalizationManager.Instance.GetString("Str_Editor_Mod_ProfileNotFound"),
                 LocalizationManager.Instance.GetString("Str_Editor_ProgramTitle"), (MB_ICONERROR | MB_OK));
 
             const int ERROR_FILE_NOT_FOUND = 2;

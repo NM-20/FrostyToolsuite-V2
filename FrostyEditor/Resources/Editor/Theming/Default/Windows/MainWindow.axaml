@@ -4,17 +4,17 @@
                     xmlns:windows="using:FrostyEditor.Views.Windows"
                     x:DataType="vm:MainWindowViewModel">
   <ControlTheme x:Key="{x:Type windows:MainWindow}"
+                BasedOn="{StaticResource {x:Type Window}}"
                 TargetType="windows:MainWindow">
-    <Setter Property="Icon"
-            Value="{StaticResource Image_Global_ProgramWindowIcon}"/>
     <Setter Property="Title"
             Value="{DynamicResource Str_Global_ProgramTitle}"/>
-    <Setter Property="Template">
-      <ControlTemplate>
+
+    <Setter Property="Content">
+      <Template>
         <ContentControl>
           <vm:MainWindowViewModel/>
         </ContentControl>
-      </ControlTemplate>
+      </Template>
     </Setter>
   </ControlTheme>
 </ResourceDictionary>

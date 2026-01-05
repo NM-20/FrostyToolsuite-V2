@@ -1,7 +1,8 @@
-<xaml:RuntimeImageInclude xmlns="https://github.com/avaloniaui"
-                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                          xmlns:xaml="using:Frosty.Ui.Xaml">
-  <xaml:RuntimeIcoSource Key="Image_Global_ProgramWindowIcon">avares://FrostyEditor/Resources/Editor/Theming/Default/Images/ProgramIcon.ico</xaml:RuntimeIcoSource>
+<media:RuntimeImageInclude xmlns="https://github.com/avaloniaui"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:media="using:Frosty.Ui.Media">
+  <media:RuntimeSvgSource Key="Image_Global_ProgramIcon">avares://FrostyEditor/Resources/Editor/Theming/Default/Images/SVGs/ProgramIcon.svg</media:RuntimeSvgSource>
+  <media:RuntimeIcoSource Key="Image_Global_ProgramWindowIcon">avares://FrostyEditor/Resources/Editor/Theming/Default/Images/ProgramWindowIcon.ico</media:RuntimeIcoSource>
 
-  <xaml:RuntimeSvgSource Key="Image_Editor_Gear">avares://FrostyEditor/Resources/Editor/Theming/Default/Images/SVGs/Gear.svg</xaml:RuntimeSvgSource>
-</xaml:RuntimeImageInclude>
+  <media:RuntimeSvgSource Key="Image_Editor_Gear">avares://FrostyEditor/Resources/Editor/Theming/Default/Images/SVGs/Gear.svg</media:RuntimeSvgSource>
+</media:RuntimeImageInclude>

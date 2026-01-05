@@ -1,13 +1,12 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:xaml="using:Frosty.Ui.Xaml">
+                    xmlns:media="using:Frosty.Ui.Media">
   <ResourceDictionary.MergedDictionaries>
     <!-- Core resources, these MUST be positioned at the top, as `StaticResource` markup is used to access them. -->
-    <xaml:RuntimeResourceInclude>avares://FrostyEditor/Resources/Editor/Theming/Default/Colors.axaml</xaml:RuntimeResourceInclude>
-    <xaml:RuntimeResourceInclude>avares://FrostyEditor/Resources/Editor/Theming/Default/Converters.axaml</xaml:RuntimeResourceInclude>
-    <xaml:RuntimeResourceInclude>avares://FrostyEditor/Resources/Editor/Theming/Default/Images.axaml</xaml:RuntimeResourceInclude>
+    <media:RuntimeResourceInclude>avares://FrostyEditor/Resources/Editor/Theming/Default/Converters.axaml</media:RuntimeResourceInclude>
+    <media:RuntimeResourceInclude>avares://FrostyEditor/Resources/Editor/Theming/Default/Images.axaml</media:RuntimeResourceInclude>
   
-    <xaml:RuntimeResourceInclude>avares://FrostyEditor/Resources/Editor/Theming/Default/Controls.axaml</xaml:RuntimeResourceInclude>
-    <xaml:RuntimeResourceInclude>avares://FrostyEditor/Resources/Editor/Theming/Default/Windows.axaml</xaml:RuntimeResourceInclude>
+    <media:RuntimeResourceInclude>avares://FrostyEditor/Resources/Editor/Theming/Default/Controls.axaml</media:RuntimeResourceInclude>
+    <media:RuntimeResourceInclude>avares://FrostyEditor/Resources/Editor/Theming/Default/Windows.axaml</media:RuntimeResourceInclude>
   </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

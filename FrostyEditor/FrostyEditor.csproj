@@ -37,17 +37,16 @@
     <None Remove="BuildLinked.ps1" />
     <None Remove="Reloaded.Trimming.targets" />
     <None Remove="Reloaded.Checks.targets" />
-    <None Remove="Resources\Editor\Theming\Default\Images\SVGs\ProgramLogo.svg" />
   </ItemGroup>
 
   <ItemGroup>
-    <AvaloniaResource Include="Resources\Editor\Theming\Default\Images\ProgramIcon.ico">
+    <AvaloniaResource Include="Resources\Editor\Theming\Default\Images\ProgramWindowIcon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
     <AvaloniaResource Include="Resources\Editor\Theming\Default\Images\SVGs\Gear.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
-    <AvaloniaResource Include="Resources\Editor\Theming\Default\Images\SVGs\ProgramLogo.svg">
+    <AvaloniaResource Include="Resources\Editor\Theming\Default\Images\SVGs\ProgramIcon.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
   </ItemGroup>
@@ -68,12 +67,11 @@
     <PackageReference Include="Avalonia" Version="11.3.10" />
     <PackageReference Include="Avalonia.Desktop" Version="11.3.10" />
     <PackageReference Include="Avalonia.Diagnostics" Version="11.3.10" />
-    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.10" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.1" />
     <PackageReference Include="Reloaded.Mod.Interfaces" Version="2.4.0" ExcludeAssets="runtime" />
     <PackageReference Include="Reloaded.SharedLib.Hooks" Version="1.9.0" />
-    <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="11.3.6.2" />
+    <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="11.3.9" />
   </ItemGroup>
 
   <ItemGroup>

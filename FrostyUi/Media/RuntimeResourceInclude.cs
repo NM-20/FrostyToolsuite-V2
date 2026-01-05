@@ -5,12 +5,12 @@ using Avalonia.Styling;
 using Frosty.Sdk.Utils;
 using Frosty.Ui.Managers;
 
-namespace Frosty.Ui.Xaml;
+namespace Frosty.Ui.Media;
 
 /// <summary>
 /// Provides a mechanism to include resources from not only an internal source, but from the disk as well.
 /// </summary>
-public class RuntimeResourceInclude : ResourceProvider
+public sealed class RuntimeResourceInclude : ResourceProvider
 {
     private IResourceProvider? m_provider;
 
@@ -38,7 +38,7 @@ public class RuntimeResourceInclude : ResourceProvider
 
     private void OnException(string source, Exception exception)
     {
-        string message = string.Format(LocalizationManager.Instance.GetString("Str_Ui_RuntimeResourceIncludeLoadException"),
+        string message = string.Format(LocalizationManager.Instance.GetString("Str_Ui_RuntimeResourceInclude_LoadException"),
             source, exception);
         MessageBoxW(0, message, LocalizationManager.Instance.GetString("Str_Global_ProgramTitle"), (MB_ICONWARNING | MB_OK));
 

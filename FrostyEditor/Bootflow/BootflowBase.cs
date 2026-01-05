@@ -1,5 +1,6 @@
 using Avalonia;
 using Frosty.Sdk;
+using Frosty.Ui.Extensions;
 using FrostyEditor.Utilities;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Mod.Interfaces.Internal;
@@ -31,7 +32,7 @@ internal unsafe abstract class BootflowBase
     // Avalonia configuration, don't remove; also used by visual designer.
     private static AppBuilder BuildAvaloniaApp() =>
         AppBuilder.Configure<App>().
-        UsePlatformDetect().WithInterFont().LogToTrace();
+        UsePlatformDetect().LogToTrace().WithRuntimeFontResolver();
 
     private static bool UseInjectionWorkflow() =>
         Config.Get("UseInjectedWorkflow", !ProfilesLibrary.HasDenuvoTicket);

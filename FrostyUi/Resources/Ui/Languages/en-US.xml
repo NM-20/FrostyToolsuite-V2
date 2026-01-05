@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageDefinition>
-    <String Identifier="Str_Ui_RuntimeImageSourceLoadException">
+    <String Identifier="Str_Global_Close">Close</String>
+    
+    <String Identifier="Str_Ui_RuntimeImageSource_LoadException">
         <Line>An exception occurred while loading the image resource with key "{0}":</Line>
         <Line/>
         <Line>{1}</Line>
     </String>
-    <String Identifier="Str_Ui_RuntimeResourceIncludeLoadException">
+    <String Identifier="Str_Ui_RuntimeResourceInclude_LoadException">
         <Line>An exception occurred while loading the resource "{0}":</Line>
         <Line/>
         <Line>{1}</Line>
     </String>
 
-    <String Identifier="Str_Ui_ViewNotFound">The `View` "{0}" could not be found!</String>
+    <String Identifier="Str_Ui_TitleBarControl_Maximize">Maximize</String>
+    <String Identifier="Str_Ui_TitleBarControl_Minimize">Minimize</String>
+    <String Identifier="Str_Ui_TitleBarControl_RestoreDown">Restore Down</String>
+
+    <String Identifier="Str_Ui_ViewLocator_NotFound">The `View` "{0}" could not be found!</String>
 </LanguageDefinition>

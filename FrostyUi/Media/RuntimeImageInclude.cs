@@ -1,6 +1,5 @@
 using Avalonia.Collections;
 using Avalonia.Controls;
-using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Metadata;
 using Avalonia.Platform;
@@ -8,9 +7,8 @@ using Avalonia.Styling;
 using Avalonia.Svg.Skia;
 using Frosty.Sdk.Utils;
 using Frosty.Ui.Managers;
-using System.Collections.Specialized;
 
-namespace Frosty.Ui.Xaml;
+namespace Frosty.Ui.Media;
 
 /// <summary>
 /// Represents an image source for <see cref="RuntimeImageInclude"/> instances within XAML to pull from.
@@ -40,6 +38,9 @@ public abstract class RuntimeImageSource
 
     private object? GetExternal()
     {
+        /*
+         * We assume that `Source` is not null here since our `Get` method checks if `Source` is `null`.
+         */
         string external = Path.Join(Utils.BaseDirectory, Source!.ToString());
 
         if (!File.Exists(external))
@@ -58,7 +59,7 @@ public abstract class RuntimeImageSource
     protected void ShowLoadException(Exception exception)
     {
         string message = string.Format(LocalizationManager.Instance.GetString(
-            "Str_Ui_RuntimeImageSourceLoadException"), Key, exception);
+            "Str_Ui_RuntimeImageSource_LoadException"), Key, exception);
         MessageBoxW(0, message,
             LocalizationManager.Instance.GetString("Str_Global_ProgramTitle"), (MB_ICONWARNING | MB_OK));
     }
@@ -90,17 +91,23 @@ public sealed class RuntimeSvgSource : RuntimeImageSource
 {
     protected override object? GetFromStream(Stream stream)
     {
-        SvgSource loaded;
         try
         {
-            loaded = SvgSource.LoadFromStream(stream);
+            /*
+             * We avoid creating an `SvgImage` automatically since this would prevent us from assigning
+             * `Css` as we can when constructing `SvgImage` manually in XAML.
+             */
+            return SvgSource.LoadFromStream(stream);
         }
         catch (Svg.SvgException svg)
         {
             ShowLoadException(svg);
+
+            /*
+             * Returning `null` should be fine, since resource providers typically support null values.
+             */
             return null;
         }
-        return new SvgImage { Source = loaded };
     }
 }
 
@@ -110,11 +117,11 @@ public sealed class RuntimeSvgSource : RuntimeImageSource
 public class RuntimeImageInclude : ResourceProvider
 {
     /*
-     * Internally, we build a `ResourceDictionary` containing the resolved sources as they are added.
+     * Internally we manage a `ResourceDictionary` containing the resolved sources as they're discovered.
      */
-    private ResourceDictionary m_dictionary = new();
+    private ResourceDictionary? m_dictionary;
 
-    public override bool HasResources => m_dictionary.HasResources;
+    public override bool HasResources => (m_dictionary?.HasResources ?? false);
 
     /// <summary>
     /// The sources that the <see cref="RuntimeImageInclude"/> should pull from for images. Each instance
@@ -123,28 +130,31 @@ public class RuntimeImageInclude : ResourceProvider
     [Content]
     public AvaloniaList<RuntimeImageSource> Sources { get; } = new();
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="RuntimeImageInclude"/> class.
-    /// </summary>
-    public RuntimeImageInclude() => Sources.CollectionChanged += Sources_CollectionChanged;
-
-    private void BuildDictionary()
+    private ResourceDictionary BuildDictionary()
     {
         /*
-         * This may be called multiple times if the user makes changes to the dictionary after it has
-         * been loaded by AXAML, so we'll clear it to be safe.
+         * `RuntimeImageInclude` instances become immutable once they've been accessed once, so we will
+         * want to block rebuilding.
          */
-        m_dictionary.Clear();
+        if (m_dictionary is not null)
+        {
+            return m_dictionary;
+        }
+
+        m_dictionary = new ResourceDictionary();
 
         foreach (RuntimeImageSource current in Sources)
         {
             m_dictionary.Add(current.Key, current.Get());
         }
+
+        /*
+         * Finally, return the `ResourceDictionary` we built. Once this method has executed once, it'll
+         * always return this.
+         */
+        return m_dictionary;
     }
 
-    private void Sources_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) =>
-        BuildDictionary();
-
     public override bool TryGetResource(object key,
-        ThemeVariant? theme, out object? value) => m_dictionary.TryGetResource(key, null, out value);
+        ThemeVariant? theme, out object? value) => BuildDictionary().TryGetResource(key, null, out value);
 }

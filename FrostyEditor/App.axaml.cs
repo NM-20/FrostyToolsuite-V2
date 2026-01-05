@@ -34,15 +34,17 @@ public partial class App : Application
 
         /*
          * Next, we can initialize the `ThemingManager`, then populate its sources and switch to the user's configured theme.
+         * Note that the order of these matters; ideally it should match the build order.
          */
-        ThemingManager.Instance.AddSource(new ThemingSource("Resources/Editor/Theming",
-            new Uri("avares://FrostyEditor/Resources/Editor/Theming")));
+        ThemingManager.Instance.AddSource(new ThemingSource("Resources/Ui/Theming", new
+            Uri("avares://FrostyUi/Resources/Ui/Theming")));
 
         /*
          * TODO: As with `LocalizationManager`, try to isolate doing this to the responsibility of the assemblies themselves.
          */
-        ThemingManager.Instance.AddSource(new ThemingSource("Resources/Ui/Theming", new
-            Uri("avares://FrostyUi/Resources/Ui/Theming")));
+        ThemingManager.Instance.AddSource(new ThemingSource("Resources/Editor/Theming",
+            new Uri("avares://FrostyEditor/Resources/Editor/Theming")));
+
 
         ThemingManager.Instance.ThemeChanged += ThemingManager_ThemeChanged;
 
@@ -83,10 +85,12 @@ public partial class App : Application
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new MainWindowViewModel(),
-            };
+
+            /*
+             * Our `ViewLocator` will automatically assign a `DataContext` for the inner view of our `MainWindow`, so we can
+             * omit the assignment here.
+             */
+            desktop.MainWindow = new MainWindow();
         }
 
         base.OnFrameworkInitializationCompleted();

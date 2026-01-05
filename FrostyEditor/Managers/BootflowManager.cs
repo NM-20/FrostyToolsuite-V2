@@ -29,8 +29,8 @@ internal static class BootflowManager
         if (bootflow is null)
         {
             MessageBoxW(0, LocalizationManager.Instance.GetString(
-                "Str_Editor_BootflowNotFound"), LocalizationManager.Instance.GetString("Str_Global_ProgramTitle"),
-                (MB_ICONERROR | MB_OK));
+                "Str_Editor_BootflowManager_NotFound"),
+                LocalizationManager.Instance.GetString("Str_Global_ProgramTitle"), (MB_ICONERROR | MB_OK));
 
             return;
         }

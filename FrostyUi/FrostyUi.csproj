@@ -13,6 +13,76 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Italic.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Light.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-LightItalic.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Medium.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-MediumItalic.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Regular.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Bold.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Light.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Medium.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Regular.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-SemiBold.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Thin.ttf" />
+    <None Remove="Resources\Ui\Theming\Default\Images\SVGs\Close.svg" />
+    <None Remove="Resources\Ui\Theming\Default\Images\SVGs\Maximize.svg" />
+    <None Remove="Resources\Ui\Theming\Default\Images\SVGs\Minimize.svg" />
+    <None Remove="Resources\Ui\Theming\Default\Images\SVGs\RestoreDown.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Italic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Light.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-LightItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-MediumItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Light.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\Inter\Inter-SemiBold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Thin.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Images\SVGs\Close.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Images\SVGs\Maximize.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Images\SVGs\Minimize.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Resources\Ui\Theming\Default\Images\SVGs\RestoreDown.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Resources\Ui\Languages\en-US.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -22,7 +92,7 @@
     <PackageReference Include="Avalonia" Version="11.3.10" />
     <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.3.10" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="11.3.6.2" />
+    <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="11.3.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,7 +100,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Converters\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Windows\" />
+    <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -22,7 +22,7 @@ internal static class ThemingManagerExtensions
         catch (ThemingManagerExternalLoadException external)
         {
             string message =
-                string.Format(LocalizationManager.Instance.GetString("Str_Editor_ThemingManagerExternalException"),
+                string.Format(LocalizationManager.Instance.GetString("Str_Editor_ThemingManager_ExternalException"),
                 external.Asset, external.InnerException);
 
             /*
@@ -34,7 +34,7 @@ internal static class ThemingManagerExtensions
         catch (ThemingManagerInternalLoadException @internal)
         {
             string message =
-                string.Format(LocalizationManager.Instance.GetString("Str_Editor_ThemingManagerInternalException"),
+                string.Format(LocalizationManager.Instance.GetString("Str_Editor_ThemingManager_InternalException"),
                 @internal.Asset, @internal.InnerException);
 
             /*

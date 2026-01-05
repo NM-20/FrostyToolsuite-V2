@@ -1,3 +1,113 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Literal colors, these should NOT escape the scope of any `Colors` XAML.
+  -->
+
+  <!-- Transparent color. Reserved for resetting colors, i.e. when hit-testing
+       must be disabled.
+  -->
+  <Color x:Key="Color_Global_Transparent">#00000000</Color>
+
+  <!-- Primary colors. Ranges from White (Primary100) to Black (Primary900).
+  -->
+  <Color x:Key="Color_Global_Primary100">#FFF5F5F5</Color>
+  <Color x:Key="Color_Global_Primary200">#FFD4D4D4</Color>
+  <Color x:Key="Color_Global_Primary400">#FF919191</Color>
+  <Color x:Key="Color_Global_Primary500">#FF808080</Color>
+  <Color x:Key="Color_Global_Primary600">#FF5E5E5E</Color>
+  <Color x:Key="Color_Global_Primary700">#FF535353</Color>
+  <Color x:Key="Color_Global_Primary750">#FF424242</Color>
+  <Color x:Key="Color_Global_Primary800">#FF333333</Color>
+  <Color x:Key="Color_Global_Primary825">#FF2B2B2B</Color>
+  <Color x:Key="Color_Global_Primary850">#FF222222</Color>
+  <Color x:Key="Color_Global_Primary900">#FF151515</Color>
+
+  <!-- Secondary colors. Ranges from a light shade of Blue (Secondary100) to
+       a dark shade of Blue (Secondary900)
+  -->
+  <Color x:Key="Color_Global_Secondary100">#FFE3F3F4</Color>
+  <Color x:Key="Color_Global_Secondary200">#FFBDE3E7</Color>
+  <Color x:Key="Color_Global_Secondary300">#FF8DD7E2</Color>
+  <Color x:Key="Color_Global_Secondary400">#FF64C5D3</Color>
+  <Color x:Key="Color_Global_Secondary500">#FF49ADB6</Color>
+  <Color x:Key="Color_Global_Secondary600">#FF219FAB</Color>
+  <Color x:Key="Color_Global_Secondary800">#FF125259</Color>
+  <Color x:Key="Color_Global_Secondary900">#FF013B41</Color>
+  <Color x:Key="Color_Global_Secondary950">#FF012428</Color>
+
+  <!-- Danger colors. Ranges from a light shade of Pink (Danger50) to a dark
+       shade of Red (Danger800).
+  -->
+  <Color x:Key="Color_Global_Danger50">#FFFFF0F3</Color>
+  <Color x:Key="Color_Global_Danger100">#FFFADBE1</Color>
+  <Color x:Key="Color_Global_Danger300">#FFED8296</Color>
+  <Color x:Key="Color_Global_Danger400">#FFEC516E</Color>
+  <Color x:Key="Color_Global_Danger500">#FFE01F43</Color>
+  <Color x:Key="Color_Global_Danger600">#FFB81433</Color>
+  <Color x:Key="Color_Global_Danger700">#FF96132C</Color>
+  <Color x:Key="Color_Global_Danger800">#FF710E21</Color>
+
+  <!-- Success colors. Rnages from a light shade of Green (Success100) to a
+       dark shade of Green (Success900).
+  -->
+  <Color x:Key="Color_Global_Success100">#FFDDFDEF</Color>
+  <Color x:Key="Color_Global_Success200">#FFAFF8D9</Color>
+  <Color x:Key="Color_Global_Success300">#FF83ECBF</Color>
+  <Color x:Key="Color_Global_Success400">#FF5DE5B7</Color>
+  <Color x:Key="Color_Global_Success500">#FF2BDA9F</Color>
+  <Color x:Key="Color_Global_Success600">#FF15BC84</Color>
+  <Color x:Key="Color_Global_Success700">#FF159369</Color>
+  <Color x:Key="Color_Global_Success800">#FF116A4C</Color>
+  <Color x:Key="Color_Global_Success900">#FF0C4B36</Color>
+
+  <!-- Functional colors. These MUST be used over references to the underlying
+       literal colors (i.e. `Color_Ui_Primary100`).
+       If a `SolidColorBrush` is missing for a particular function, define one
+       as a wrapper for the appropriate literal color.
+  -->
+
+  <!-- Transparent `SolidColorBrush`. This MUST be preferred over defining new
+       wrappers around `Color_Global_Transparent`.
+  -->
+  <SolidColorBrush x:Key="Brush_Global_Transparent"
+                   Color="{StaticResource Color_Global_Transparent}"/>
+
+  <!-- Default `Button` theming. -->
+  <SolidColorBrush x:Key="Brush_Ui_GenericContentButton_PointerOverBackground"
+                   Color="{StaticResource Color_Global_Primary100}"
+                   Opacity="0.05"/>
+  <SolidColorBrush x:Key="Brush_Ui_GenericContentButton_PressedBackground"
+                   Color="{StaticResource Color_Global_Primary100}"
+                   Opacity="0.15"/>
+
+  <!-- Frosty-themed Avalonia `Window`. -->
+  <SolidColorBrush x:Key="Brush_Ui_Window_Background"
+                   Color="{StaticResource Color_Global_Primary900}"/>
+  <SolidColorBrush x:Key="Brush_Ui_Window_Border"
+                   Color="{StaticResource Color_Global_Primary800}"/>
+
+  <!-- Primary `Button` theming; solid-fill variant. -->
+  <SolidColorBrush x:Key="Brush_Ui_PrimarySolidContentButton_NeutralBackground"
+                   Color="{StaticResource Color_Global_Primary600}"/>
+  <SolidColorBrush x:Key="Brush_Ui_PrimarySolidContentButton_PointerOverBackground"
+                   Color="{StaticResource Color_Global_Primary800}"/>
+  <SolidColorBrush x:Key="Brush_Ui_PrimarySolidContentButton_PressedBackground"
+                   Color="{StaticResource Color_Global_Primary900}"/>
+
+  <!-- Secondary `Button` theming; solid-fill variant. -->
+  <SolidColorBrush x:Key="Brush_Ui_SecondarySolidContentButton_NeutralBackground"
+                   Color="{StaticResource Color_Global_Secondary800}"/>
+  <SolidColorBrush x:Key="Brush_Ui_SecondarySolidContentButton_PointerOverBackground"
+                   Color="{StaticResource Color_Global_Secondary900}"/>
+  <SolidColorBrush x:Key="Brush_Ui_SecondarySolidContentButton_PressedBackground"
+                   Color="{StaticResource Color_Global_Secondary950}"/>
+
+  <!-- `TitleBarControl` from `Frosty.Ui`. -->
+  <SolidColorBrush x:Key="Brush_Ui_TitleBarControl_Background"
+                   Color="{StaticResource Color_Global_Primary900}"/>
+
+  <SolidColorBrush x:Key="Brush_Ui_TitleBarControl_CloseButton_PointerOverBackground"
+                   Color="{StaticResource Color_Global_Danger600}"/>
+  <SolidColorBrush x:Key="Brush_Ui_TitleBarControl_CloseButton_PressedBackground"
+                   Color="{StaticResource Color_Global_Danger800}"/>
 </ResourceDictionary>

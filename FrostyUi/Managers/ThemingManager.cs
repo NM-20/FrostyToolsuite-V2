@@ -403,7 +403,7 @@ public class ThemingManager
         CurrentTheme = theme;
         List<IResourceProvider> resources = new();
 
-        if (theme is not null)
+        if (!string.IsNullOrEmpty(theme))
         {
             foreach (ThemingSource current in m_sources)
             {

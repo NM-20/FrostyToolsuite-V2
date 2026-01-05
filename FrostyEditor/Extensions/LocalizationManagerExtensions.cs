@@ -21,7 +21,7 @@ internal static class LocalizationManagerExtensions
         }
         catch (LocalizationManagerLoadException exception)
         {
-            string message = string.Format(extended.GetString("Str_Editor_LocalizationManagerLoadException"),
+            string message = string.Format(extended.GetString("Str_Editor_LocalizationManager_LoadException"),
                 language, exception.InnerException);
             MessageBoxW(0, message, extended.GetString("Str_Global_ProgramTitle"), (MB_ICONERROR | MB_OK));
         }

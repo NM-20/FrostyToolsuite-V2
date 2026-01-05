@@ -58,7 +58,7 @@ public class ViewLocator : IDataTemplate
          * using it here.
          */
         return new TextBlock
-        { Text = string.Format(LocalizationManager.Instance.GetString("Str_Ui_ViewNotFound"), name) };
+        { Text = string.Format(LocalizationManager.Instance.GetString("Str_Ui_ViewLocator_NotFound"), name) };
     }
 
     public bool Match(object? data) => (data is ViewModelBase);

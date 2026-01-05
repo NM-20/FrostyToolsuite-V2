@@ -78,12 +78,12 @@ public struct LocalizationSource
          * `External` can be specified as `null` or an empty string to default to always using the internal
          * stream.
          */
+        string filename = $"{language}.xml";
+
         if (string.IsNullOrEmpty(External))
         {
-            return GetInternalStream(language);
+            return GetInternalStream(filename);
         }
-
-        string filename = $"{language}.xml";
 
         string external = Path.Combine(
             Utils.BaseDirectory,
@@ -454,7 +454,7 @@ public class LocalizationManager
         m_dictionary.Clear();
         CurrentLocale = language;
 
-        if (language is not null)
+        if (!string.IsNullOrEmpty(language))
         {
             foreach (LocalizationSource current in m_sources)
             {

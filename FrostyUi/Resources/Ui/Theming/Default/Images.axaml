@@ -1,4 +1,8 @@
-<xaml:RuntimeImageInclude xmlns="https://github.com/avaloniaui"
-                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                          xmlns:xaml="using:Frosty.Ui.Xaml">
-</xaml:RuntimeImageInclude>
+<media:RuntimeImageInclude xmlns="https://github.com/avaloniaui"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:media="using:Frosty.Ui.Media">
+  <media:RuntimeSvgSource Key="Image_Ui_TitleBarControl_Close">avares://FrostyUi/Resources/Ui/Theming/Default/Images/SVGs/Close.svg</media:RuntimeSvgSource>
+  <media:RuntimeSvgSource Key="Image_Ui_TitleBarControl_Maximize">avares://FrostyUi/Resources/Ui/Theming/Default/Images/SVGs/Maximize.svg</media:RuntimeSvgSource>
+  <media:RuntimeSvgSource Key="Image_Ui_TitleBarControl_Minimize">avares://FrostyUi/Resources/Ui/Theming/Default/Images/SVGs/Minimize.svg</media:RuntimeSvgSource>
+  <media:RuntimeSvgSource Key="Image_Ui_TitleBarControl_RestoreDown">avares://FrostyUi/Resources/Ui/Theming/Default/Images/SVGs/RestoreDown.svg</media:RuntimeSvgSource>
+</media:RuntimeImageInclude>

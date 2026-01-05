@@ -1,0 +1,23 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Font URIs. These should NOT escape the scope of this asset. To use a particular font, see the `FontFamily` resources
+       defined afterwards.
+  -->
+  <x:String x:Key="Font_Ui_DMMono_Italic">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-Italic.ttf</x:String>
+  <x:String x:Key="Font_Ui_DMMono_Light">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-Light.ttf</x:String>
+  <x:String x:Key="Font_Ui_DMMono_LightItalic">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-LightItalic.ttf</x:String>
+  <x:String x:Key="Font_Ui_DMMono_Medium">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-Medium.ttf</x:String>
+  <x:String x:Key="Font_Ui_DMMono_MediumItalic">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-MediumItalic.ttf</x:String>
+  <x:String x:Key="Font_Ui_DMMono_Regular">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-Regular.ttf</x:String>
+
+  <x:String x:Key="Font_Ui_Inter_Bold">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Bold.ttf</x:String>
+  <x:String x:Key="Font_Ui_Inter_Light">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Light.ttf</x:String>
+  <x:String x:Key="Font_Ui_Inter_Medium">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Medium.ttf</x:String>
+  <x:String x:Key="Font_Ui_Inter_Regular">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Regular.ttf</x:String>
+  <x:String x:Key="Font_Ui_Inter_SemiBold">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-SemiBold.ttf</x:String>
+  <x:String x:Key="Font_Ui_Inter_Thin">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Thin.ttf</x:String>
+
+  <!-- `FontFamily` resources. These MUST be used in favor of accessing the URIs stored above directly, as all are reserved
+      for use within this asset only.
+  -->
+</ResourceDictionary>

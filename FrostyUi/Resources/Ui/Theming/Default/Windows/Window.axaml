@@ -1,0 +1,101 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:Frosty.Ui.Controls">
+  <ControlTheme x:Key="GenericWindow"
+                TargetType="Window">
+    <Setter Property="Background"
+            Value="{StaticResource Brush_Ui_Window_Background}"/>
+
+    <Setter Property="BorderBrush"
+            Value="{StaticResource Brush_Ui_Window_Border}"/>
+    <Setter Property="BorderThickness"
+            Value="1"/>
+
+    <Setter Property="CornerRadius"
+            Value="7"/>
+
+    <!-- To allow for `TitleBarControl` to work, we'll need to ensure that we remove the system `WindowChrome`. -->
+    <Setter Property="ExtendClientAreaChromeHints"
+            Value="NoChrome"/>
+    <Setter Property="ExtendClientAreaTitleBarHeightHint"
+            Value="-1"/>
+    <Setter Property="ExtendClientAreaToDecorationsHint"
+            Value="True"/>
+
+    <!-- We use `DynamicResource` here since we don't have static access to the resource; it's defined depending on
+         the program and the theme.
+         Also, we'll always load sources based on the build order, as it gives us a clear view of the dependencies.
+         Since `FrostyUi` builds before `FrostyEditor`, `Image_Global_ProgramWindowIcon` will get loaded AFTER this
+         window gets loaded.
+    -->
+    <Setter Property="Icon"
+            Value="{DynamicResource Image_Global_ProgramWindowIcon}"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <!-- We'll need to adjust the `CornerRadius` when we are maximized so as to prevent visual artifacts. -->
+          <Grid.Styles>
+            <Style Selector="Border#PART_RootBorder.IsMaximized">
+              <Setter Property="CornerRadius"
+                      Value="0"/>
+            </Style>
+          </Grid.Styles>
+
+          <!-- By default, disabling the `WindowChrome` causes some weird issues with a portion of the UI going off
+               the screen.
+               We can fix this by binding our `Border`'s `Margin` to the direct property named `OffScreenMargin`.
+          -->
+          <Border x:Name="PART_RootBorder"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  Classes.IsMaximized="{TemplateBinding WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Maximized'}"
+                  CornerRadius="{TemplateBinding CornerRadius}"
+                  Margin="{TemplateBinding OffScreenMargin}">
+            <!-- Avalonia has a bit of an issue with clipping to rounded corners: the `Background` of child elements
+                 will draw over the defined `BorderThickness`, if any.
+                 To solve this, we'll need to encapsulate a plain, rounded border with `ClipToBounds` set to true in
+                 another `Border`, which will wrap around the rounded corners of the inner border.
+            -->
+            <Border ClipToBounds="True"
+                    CornerRadius="{Binding #PART_RootBorder.CornerRadius}">
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="40"/>
+                  <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <controls:TitleBarControl BorderBrush="{StaticResource Brush_Ui_Window_Border}"
+                                          BorderThickness="0,0,0,1"
+                                          Grid.Row="0"
+                                          OwningWindow="{Binding $parent[Window]}">
+                  <StackPanel Orientation="Horizontal"
+                              Margin="8,0"
+                              Spacing="8">
+                    <Image Height="24"
+                           Width="24">
+                      <!-- Our program icons contain multiple colors, so we will want to avoid setting `fill` as we
+                           have usually done.
+                      -->
+                      <SvgImage Source="{DynamicResource Image_Global_ProgramIcon}"/>
+                    </Image>
+                  </StackPanel>
+                </controls:TitleBarControl>
+                <ContentPresenter Content="{TemplateBinding Content}"
+                                  Grid.Row="1"/>
+              </Grid>
+            </Border>
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+
+  <!-- This sets the default `Window` theming across the UI. When required, change the `BasedOn` property to another
+       theme defined within the scope of this resource.
+  -->
+  <ControlTheme x:Key="{x:Type Window}"
+                BasedOn="{StaticResource GenericWindow}"
+                TargetType="Window"/>
+</ResourceDictionary>

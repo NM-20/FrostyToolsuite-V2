@@ -1,0 +1,160 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:Frosty.Ui.Controls">
+  <ControlTheme x:Key="{x:Type controls:TitleBarControl}"
+                TargetType="controls:TitleBarControl">
+    <Setter Property="Background"
+            Value="{StaticResource Brush_Ui_TitleBarControl_Background}"/>
+
+    <Setter Property="HorizontalAlignment"
+            Value="Stretch"/>
+    <Setter Property="VerticalAlignment"
+            Value="Stretch"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <ContentPresenter x:Name="PART_ContentPresenter"
+                              Content="{TemplateBinding Content}"
+                              Grid.Column="0"/>
+
+            <!-- Avalonia is a bit funky in that we need to specify a `Background` in order for hit testing to work. Without
+                 doing this, functionality such as the `ContextFlyout` and `PointerPressed` won't work.
+            -->
+            <Grid x:Name="PART_DragGrid"
+                  Background="{TemplateBinding Background}"
+                  Grid.Column="1">
+              <Grid.ContextFlyout>
+                <MenuFlyout>
+                  <MenuItem x:Name="PART_RestoreMenuItem"
+                            Header="{DynamicResource Str_Ui_TitleBarControl_RestoreDown}"
+                            IsEnabled="{Binding OwningWindow?.WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Maximized', RelativeSource={RelativeSource TemplatedParent}}">
+                    <MenuItem.Icon>
+                      <Image>
+                        <SvgImage Source="{StaticResource Image_Ui_TitleBarControl_RestoreDown}"/>
+                      </Image>
+                    </MenuItem.Icon>
+                  </MenuItem>
+                  <MenuItem x:Name="PART_MinimizeMenuItem"
+                            Header="{DynamicResource Str_Ui_TitleBarControl_Minimize}">
+                    <MenuItem.Icon>
+                      <Image>
+                        <SvgImage Source="{StaticResource Image_Ui_TitleBarControl_Minimize}"/>
+                      </Image>
+                    </MenuItem.Icon>
+                  </MenuItem>
+                  <MenuItem x:Name="PART_MaximizeMenuItem"
+                            Header="{DynamicResource Str_Ui_TitleBarControl_Maximize}"
+                            IsEnabled="{Binding OwningWindow?.WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Normal', RelativeSource={RelativeSource TemplatedParent}}">
+                    <MenuItem.Icon>
+                      <Image>
+                        <SvgImage Source="{StaticResource Image_Ui_TitleBarControl_Maximize}"/>
+                      </Image>
+                    </MenuItem.Icon>
+                  </MenuItem>
+                  <MenuItem x:Name="PART_CloseMenuItem"
+                            Header="{DynamicResource Str_Global_Close}">
+                    <MenuItem.Icon>
+                      <Image>
+                        <SvgImage Source="{StaticResource Image_Ui_TitleBarControl_Close}"/>
+                      </Image>
+                    </MenuItem.Icon>
+                  </MenuItem>
+                </MenuFlyout>
+              </Grid.ContextFlyout>
+            </Grid>
+            <StackPanel Grid.Column="2"
+                        Orientation="Horizontal">
+              <StackPanel.Styles>
+                <!-- Default `Button` properties. -->
+                <Style Selector="Button">
+                  <Setter Property="Background"
+                          Value="{TemplateBinding Background}"/>
+
+                  <Setter Property="BorderThickness"
+                          Value="0"/>
+                  <Setter Property="CornerRadius"
+                          Value="0"/>
+
+                  <Setter Property="VerticalAlignment"
+                          Value="Stretch"/>
+
+                  <Setter Property="Width"
+                          Value="46"/>
+                </Style>
+
+                <!-- Close `Button`'s switch to highlight color. -->
+                <Style Selector="Button#PART_CloseButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                  <Setter Property="Background"
+                          Value="{StaticResource Brush_Ui_TitleBarControl_CloseButton_PointerOverBackground}"/>
+                </Style>
+
+                <!-- Close `Button`'s switch to pressed color. -->
+                <Style Selector="Button#PART_CloseButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                  <Setter Property="Background"
+                          Value="{StaticResource Brush_Ui_TitleBarControl_CloseButton_PressedBackground}"/>
+                </Style>
+
+                <!-- Maximize `Button`'s switch to "Restore Down" icon and tooltip. -->
+                <Style Selector="Button#PART_MaximizeButton.IsMaximized">
+                  <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Content">
+                      <Template>
+                        <Image>
+                          <SvgImage Source="{StaticResource Image_Ui_TitleBarControl_RestoreDown}"/>
+                        </Image>
+                      </Template>
+                    </Setter>
+                  </Style>
+
+                  <Setter Property="ToolTip.Tip"
+                          Value="{DynamicResource Str_Ui_TitleBarControl_RestoreDown}"/>
+                </Style>
+
+                <!-- Uniform size for all `Image` instances created in this scope, i.e. the Close SVG icon. -->
+                <Style Selector="Image">
+                  <Setter Property="Height"
+                          Value="10"/>
+                  <Setter Property="Width"
+                          Value="10"/>
+                </Style>
+              </StackPanel.Styles>
+
+              <Button x:Name="PART_MinimizeButton"
+                      IsVisible="{TemplateBinding CanMinimize}"
+                      ToolTip.Tip="{DynamicResource Str_Ui_TitleBarControl_Minimize}">
+                <Image>
+                  <SvgImage Source="{StaticResource Image_Ui_TitleBarControl_Minimize}"/>
+                </Image>
+              </Button>
+              <Button x:Name="PART_MaximizeButton"
+                      Classes.IsMaximized="{Binding OwningWindow?.WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Maximized', RelativeSource={RelativeSource TemplatedParent}}"
+                      IsVisible="{TemplateBinding CanMaximize}"
+                      ToolTip.Tip="{DynamicResource Str_Ui_TitleBarControl_Maximize}">
+                <Image>
+                  <SvgImage Source="{StaticResource Image_Ui_TitleBarControl_Maximize}"/>
+                </Image>
+              </Button>
+              <Button x:Name="PART_CloseButton"
+                      ToolTip.Tip="{DynamicResource Str_Global_Close}">
+                <Image>
+                  <SvgImage Source="{StaticResource Image_Ui_TitleBarControl_Close}"/>
+                </Image>
+              </Button>
+            </StackPanel>
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+</ResourceDictionary>
