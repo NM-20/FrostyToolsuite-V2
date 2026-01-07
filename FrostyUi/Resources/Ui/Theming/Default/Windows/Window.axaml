@@ -55,7 +55,7 @@
                   Background="{TemplateBinding Background}"
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}"
-                  Classes.is-maximized="{TemplateBinding WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Maximized'}"
+                  Classes.is-maximized="{TemplateBinding WindowState, Converter={x:Static ObjectConverters.Equal}, ConverterParameter={x:Static WindowState.Maximized}}"
                   CornerRadius="{TemplateBinding CornerRadius}"
                   Margin="{TemplateBinding OffScreenMargin}">
             <!-- Avalonia has a bit of an issue with clipping to rounded corners: the `Background` of child elements

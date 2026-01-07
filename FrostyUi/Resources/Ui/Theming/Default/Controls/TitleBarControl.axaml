@@ -38,7 +38,7 @@
                 <MenuFlyout>
                   <MenuItem x:Name="PART_RestoreMenuItem"
                             Header="{DynamicResource Str_Ui_TitleBarControl_RestoreDown}"
-                            IsEnabled="{Binding OwningWindow?.WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Maximized', RelativeSource={RelativeSource TemplatedParent}}">
+                            IsEnabled="{Binding OwningWindow?.WindowState, Converter={x:Static ObjectConverters.Equal}, ConverterParameter={x:Static WindowState.Maximized}, RelativeSource={RelativeSource TemplatedParent}}">
                     <MenuItem.Icon>
                       <Image>
                         <SvgImage Source="{StaticResource Image_Ui_TitleBarControl_RestoreDown}"/>
@@ -55,7 +55,7 @@
                   </MenuItem>
                   <MenuItem x:Name="PART_MaximizeMenuItem"
                             Header="{DynamicResource Str_Ui_TitleBarControl_Maximize}"
-                            IsEnabled="{Binding OwningWindow?.WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Normal', RelativeSource={RelativeSource TemplatedParent}}">
+                            IsEnabled="{Binding OwningWindow?.WindowState, Converter={x:Static ObjectConverters.Equal}, ConverterParameter={x:Static WindowState.Normal}, RelativeSource={RelativeSource TemplatedParent}}">
                     <MenuItem.Icon>
                       <Image>
                         <SvgImage Source="{StaticResource Image_Ui_TitleBarControl_Maximize}"/>
@@ -151,7 +151,7 @@
                 </Image>
               </Button>
               <Button x:Name="PART_MaximizeButton"
-                      Classes.is-maximized="{Binding OwningWindow?.WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Maximized', RelativeSource={RelativeSource TemplatedParent}}"
+                      Classes.is-maximized="{Binding OwningWindow?.WindowState, Converter={x:Static ObjectConverters.Equal}, ConverterParameter={x:Static WindowState.Maximized}, RelativeSource={RelativeSource TemplatedParent}}"
                       IsVisible="{TemplateBinding CanMaximize}"
                       ToolTip.Tip="{DynamicResource Str_Ui_TitleBarControl_Maximize}">
                 <Image>

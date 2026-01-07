@@ -54,39 +54,7 @@
   <StaticResource x:Key="Font_Global_Body2_Thin"
                   ResourceKey="Font_Global_Body2_Regular"/>
 
-  <!-- Heading 1: Avalonia Inter. -->
-  <StaticResource x:Key="Font_Global_Heading1_Bold"
-                  ResourceKey="Font_Ui_Inter_Bold"/>
-  <StaticResource x:Key="Font_Global_Heading1_Light"
-                  ResourceKey="Font_Ui_Inter_Light"/>
-  <StaticResource x:Key="Font_Global_Heading1_Regular"
-                  ResourceKey="Font_Ui_Inter_Regular"/>
-  <StaticResource x:Key="Font_Global_Heading1_SemiBold"
+  <!-- Heading: Avalonia Inter, exclusively SemiBold. -->
+  <StaticResource x:Key="Font_Global_Heading"
                   ResourceKey="Font_Ui_Inter_SemiBold"/>
-  <StaticResource x:Key="Font_Global_Heading1_Thin"
-                  ResourceKey="Font_Ui_Inter_Thin"/>
-
-  <!-- Fallbacks for undefined font styles. -->
-  <StaticResource x:Key="Font_Global_Heading1_Italic"
-                  ResourceKey="Font_Global_Heading1_Regular"/>
-  <StaticResource x:Key="Font_Global_Heading1_LightItalic"
-                  ResourceKey="Font_Global_Heading1_Light"/>
-
-  <!-- Heading 2: DM Mono. -->
-  <StaticResource x:Key="Font_Global_Heading2_Italic"
-                  ResourceKey="Font_Ui_DMMono_Italic"/>
-  <StaticResource x:Key="Font_Global_Heading2_Light"
-                  ResourceKey="Font_Ui_DMMono_Light"/>
-  <StaticResource x:Key="Font_Global_Heading2_LightItalic"
-                  ResourceKey="Font_Ui_DMMono_LightItalic"/>
-  <StaticResource x:Key="Font_Global_Heading2_Regular"
-                  ResourceKey="Font_Ui_DMMono_Regular"/>
-
-  <!-- Fallback for undefined font styles. -->
-  <StaticResource x:Key="Font_Global_Heading2_Bold"
-                  ResourceKey="Font_Global_Heading2_Regular"/>
-  <StaticResource x:Key="Font_Global_Heading2_SemiBold"
-                  ResourceKey="Font_Global_Heading2_Regular"/>
-  <StaticResource x:Key="Font_Global_Heading2_Thin"
-                  ResourceKey="Font_Global_Heading2_Regular"/>
 </ResourceDictionary>

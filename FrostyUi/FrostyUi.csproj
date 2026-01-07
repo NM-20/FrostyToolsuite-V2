@@ -89,6 +89,7 @@
 
   <ItemGroup>
     <Folder Include="Controls\" />
+    <Folder Include="Converters\" />
     <Folder Include="Xaml\" />
     <Folder Include="Windows\" />
     <Folder Include="Views\" />

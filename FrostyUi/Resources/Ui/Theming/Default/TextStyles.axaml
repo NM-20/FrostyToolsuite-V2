@@ -121,125 +121,50 @@
     </Style>
 
     <Style Selector="^.heading">
+      <Setter Property="FontFamily"
+              Value="{StaticResource Font_Global_Heading}"/>
+
       <!-- Size variations. Cycle between these depending on the emphasis desired. -->
-      <Style Selector="^.lg">
+      <Style Selector="^.h1">
         <Setter Property="FontSize"
                 Value="40"/>
         <Setter Property="LineHeight"
                 Value="100"/>
       </Style>
 
-      <Style Selector="^.md">
+      <Style Selector="^.h2">
         <Setter Property="FontSize"
                 Value="32"/>
         <Setter Property="LineHeight"
                 Value="110"/>
       </Style>
 
-      <Style Selector="^.sm">
+      <Style Selector="^.h3">
         <Setter Property="FontSize"
                 Value="24"/>
         <Setter Property="LineHeight"
                 Value="120"/>
       </Style>
 
-      <Style Selector="^.xs">
+      <Style Selector="^.h4">
         <Setter Property="FontSize"
                 Value="20"/>
         <Setter Property="LineHeight"
                 Value="120"/>
       </Style>
 
-      <Style Selector="^.xxs">
+      <Style Selector="^.h5">
         <Setter Property="FontSize"
                 Value="18"/>
         <Setter Property="LineHeight"
                 Value="120"/>
       </Style>
 
-      <Style Selector="^.xxxs">
+      <Style Selector="^.h6">
         <Setter Property="FontSize"
                 Value="14"/>
         <Setter Property="LineHeight"
                 Value="120"/>
-      </Style>
-
-      <!-- Font variations. Cycle between these depending on the emphasis desired. -->
-
-      <!-- Heading 1: Inter -->
-      <Style Selector="^.h1">
-        <Style Selector="^.bold">
-          <Setter Property="FontFamily"
-                  Value="{StaticResource Font_Global_Heading1_Bold}"/>
-        </Style>
-
-        <Style Selector="^.light">
-          <Setter Property="FontFamily"
-                  Value="{StaticResource Font_Global_Heading1_Light}"/>
-
-          <Style Selector="^.italic">
-            <Setter Property="FontFamily"
-                    Value="{StaticResource Font_Global_Heading1_LightItalic}"/>
-          </Style>
-        </Style>
-
-        <Style Selector="^.regular">
-          <Setter Property="FontFamily"
-                  Value="{StaticResource Font_Global_Heading1_Regular}"/>
-
-          <Style Selector="^.italic">
-            <Setter Property="FontFamily"
-                    Value="{StaticResource Font_Global_Heading1_Italic}"/>
-          </Style>
-        </Style>
-
-        <Style Selector="^.semibold">
-          <Setter Property="FontFamily"
-                  Value="{StaticResource Font_Global_Heading1_SemiBold}"/>
-        </Style>
-
-        <Style Selector="^.thin">
-          <Setter Property="FontFamily"
-                  Value="{StaticResource Font_Global_Heading1_Thin}"/>
-        </Style>
-      </Style>
-
-      <!-- Heading 2: DM Mono -->
-      <Style Selector="^.h2">
-        <Style Selector="^.bold">
-          <Setter Property="FontFamily"
-                  Value="{StaticResource Font_Global_Heading2_Bold}"/>
-        </Style>
-
-        <Style Selector="^.light">
-          <Setter Property="FontFamily"
-                  Value="{StaticResource Font_Global_Heading2_Light}"/>
-
-          <Style Selector="^.italic">
-            <Setter Property="FontFamily"
-                    Value="{StaticResource Font_Global_Heading2_LightItalic}"/>
-          </Style>
-        </Style>
-
-        <Style Selector="^.regular">
-          <Setter Property="FontFamily"
-                  Value="{StaticResource Font_Global_Heading2_Regular}"/>
-
-          <Style Selector="^.italic">
-            <Setter Property="FontFamily"
-                    Value="{StaticResource Font_Global_Heading2_Italic}"/>
-          </Style>
-        </Style>
-
-        <Style Selector="^.semibold">
-          <Setter Property="FontFamily"
-                  Value="{StaticResource Font_Global_Heading2_SemiBold}"/>
-        </Style>
-
-        <Style Selector="^.thin">
-          <Setter Property="FontFamily"
-                  Value="{StaticResource Font_Global_Heading2_Thin}"/>
-        </Style>
       </Style>
     </Style>
   </Style>
