@@ -11,6 +11,15 @@ namespace Frosty.Ui.Extensions;
 public static class AppBuilderExtensions
 {
     /// <summary>
+    /// Enables Skia's `SaveLayer` API as a means of handling opacity. This can correct issues with `SvgImage`
+    /// not responding to opacity changes.
+    /// </summary>
+    /// <param name="extended">Reserved.</param>
+    /// <returns>The <see cref="AppBuilder"/> to chain function calls.</returns>
+    public static AppBuilder WithOpacitySaveLayer(this AppBuilder extended) =>
+        extended.With(new SkiaOptions { UseOpacitySaveLayer = true });
+
+    /// <summary>
     /// Registers a <see cref="FontCollectionBase"/> implementation that resolves and caches fonts at runtime.
     /// This pulls fonts not only from internal sources, but also from the disk.
     /// </summary>

@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- For the `Global` color definitions, see the `Colors.axaml` asset within
+       `FrostyUi`.
+  -->
+
+  <!-- Functional colors. These MUST be used over references to the underlying
+       literal colors (i.e. `Color_Ui_Primary100`).
+       If a `SolidColorBrush` is missing for a particular function, define one
+       as a wrapper for the appropriate literal color.
+  -->
+  <SolidColorBrush x:Key="Brush_Editor_SplashWindowView_Sidebar_Background"
+                   Color="{StaticResource Color_Global_Primary900}"/>
+</ResourceDictionary>

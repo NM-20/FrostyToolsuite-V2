@@ -1,18 +1,23 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:vm="using:FrostyEditor.ViewModels"
-                    xmlns:windows="using:FrostyEditor.Views.Windows"
-                    x:DataType="vm:MainWindowViewModel">
-  <ControlTheme x:Key="{x:Type windows:MainWindow}"
+                    xmlns:windows="using:FrostyEditor.Windows"
+                    x:DataType="vm:SplashWindowViewModel">
+  <ControlTheme x:Key="{x:Type windows:SplashWindow}"
                 BasedOn="{StaticResource {x:Type Window}}"
-                TargetType="windows:MainWindow">
+                TargetType="windows:SplashWindow">
+    <Setter Property="Height"
+            Value="728"/>
+    <Setter Property="Width"
+            Value="1280"/>
+
     <Setter Property="Title"
             Value="{DynamicResource Str_Global_ProgramTitle}"/>
 
     <Setter Property="Content">
       <Template>
         <ContentControl>
-          <vm:MainWindowViewModel/>
+          <vm:SplashWindowViewModel/>
         </ContentControl>
       </Template>
     </Setter>

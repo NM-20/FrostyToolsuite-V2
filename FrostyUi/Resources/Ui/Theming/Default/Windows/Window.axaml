@@ -22,6 +22,11 @@
     <Setter Property="ExtendClientAreaToDecorationsHint"
             Value="True"/>
 
+    <Setter Property="FontFamily"
+            Value="{StaticResource Font_Global_Body1_Regular}"/>
+    <Setter Property="Foreground"
+            Value="{StaticResource Brush_Global_Foreground}"/>
+
     <!-- We use `DynamicResource` here since we don't have static access to the resource; it's defined depending on
          the program and the theme.
          Also, we'll always load sources based on the build order, as it gives us a clear view of the dependencies.
@@ -36,7 +41,7 @@
         <Grid>
           <!-- We'll need to adjust the `CornerRadius` when we are maximized so as to prevent visual artifacts. -->
           <Grid.Styles>
-            <Style Selector="Border#PART_RootBorder.IsMaximized">
+            <Style Selector="Border#PART_RootBorder.is-maximized">
               <Setter Property="CornerRadius"
                       Value="0"/>
             </Style>
@@ -50,7 +55,7 @@
                   Background="{TemplateBinding Background}"
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}"
-                  Classes.IsMaximized="{TemplateBinding WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Maximized'}"
+                  Classes.is-maximized="{TemplateBinding WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Maximized'}"
                   CornerRadius="{TemplateBinding CornerRadius}"
                   Margin="{TemplateBinding OffScreenMargin}">
             <!-- Avalonia has a bit of an issue with clipping to rounded corners: the `Background` of child elements
@@ -74,12 +79,16 @@
                               Margin="8,0"
                               Spacing="8">
                     <Image Height="24"
+                           VerticalAlignment="Center"
                            Width="24">
                       <!-- Our program icons contain multiple colors, so we will want to avoid setting `fill` as we
                            have usually done.
                       -->
                       <SvgImage Source="{DynamicResource Image_Global_ProgramIcon}"/>
                     </Image>
+                    <TextBlock Classes="body sm b1 regular"
+                               Text="{TemplateBinding Title}"
+                               VerticalAlignment="Center"/>
                   </StackPanel>
                 </controls:TitleBarControl>
                 <ContentPresenter Content="{TemplateBinding Content}"

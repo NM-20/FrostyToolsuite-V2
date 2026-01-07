@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:views="using:FrostyEditor.Views"
+                    xmlns:vm="using:FrostyEditor.ViewModels"
+                    x:DataType="vm:SplashWindowViewModel">
+  <ControlTheme x:Key="{x:Type views:SplashWindowView}"
+                TargetType="views:SplashWindowView">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+
+          <Grid Background="{StaticResource Brush_Editor_SplashWindowView_Sidebar_Background}"
+                Grid.Column="0">
+            
+          </Grid>
+          <GridSplitter Grid.Column="1"/>
+          <StackPanel Grid.Column="2"
+                      Orientation="Horizontal">
+          </StackPanel>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+</ResourceDictionary>

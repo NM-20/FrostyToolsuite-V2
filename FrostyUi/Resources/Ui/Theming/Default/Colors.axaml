@@ -72,6 +72,9 @@
   <SolidColorBrush x:Key="Brush_Global_Transparent"
                    Color="{StaticResource Color_Global_Transparent}"/>
 
+  <SolidColorBrush x:Key="Brush_Global_Foreground"
+                   Color="{StaticResource Color_Global_Primary100}"/>
+
   <!-- Default `Button` theming. -->
   <SolidColorBrush x:Key="Brush_Ui_GenericContentButton_PointerOverBackground"
                    Color="{StaticResource Color_Global_Primary100}"
@@ -80,6 +83,12 @@
                    Color="{StaticResource Color_Global_Primary100}"
                    Opacity="0.15"/>
 
+  <!-- Frosty-themed Avalonia `ToolTip`. -->
+  <SolidColorBrush x:Key="Brush_Ui_ToolTip_Background"
+                   Color="{StaticResource Color_Global_Primary800}"/>
+  <SolidColorBrush x:Key="Brush_Ui_ToolTip_Border"
+                   Color="{StaticResource Color_Global_Primary600}"/>
+
   <!-- Frosty-themed Avalonia `Window`. -->
   <SolidColorBrush x:Key="Brush_Ui_Window_Background"
                    Color="{StaticResource Color_Global_Primary900}"/>
@@ -87,19 +96,19 @@
                    Color="{StaticResource Color_Global_Primary800}"/>
 
   <!-- Primary `Button` theming; solid-fill variant. -->
-  <SolidColorBrush x:Key="Brush_Ui_PrimarySolidContentButton_NeutralBackground"
+  <SolidColorBrush x:Key="Brush_Ui_PrimaryFillContentButton_NeutralBackground"
                    Color="{StaticResource Color_Global_Primary600}"/>
-  <SolidColorBrush x:Key="Brush_Ui_PrimarySolidContentButton_PointerOverBackground"
+  <SolidColorBrush x:Key="Brush_Ui_PrimaryFillContentButton_PointerOverBackground"
                    Color="{StaticResource Color_Global_Primary800}"/>
-  <SolidColorBrush x:Key="Brush_Ui_PrimarySolidContentButton_PressedBackground"
+  <SolidColorBrush x:Key="Brush_Ui_PrimaryFillContentButton_PressedBackground"
                    Color="{StaticResource Color_Global_Primary900}"/>
 
   <!-- Secondary `Button` theming; solid-fill variant. -->
-  <SolidColorBrush x:Key="Brush_Ui_SecondarySolidContentButton_NeutralBackground"
+  <SolidColorBrush x:Key="Brush_Ui_SecondaryFillContentButton_NeutralBackground"
                    Color="{StaticResource Color_Global_Secondary800}"/>
-  <SolidColorBrush x:Key="Brush_Ui_SecondarySolidContentButton_PointerOverBackground"
+  <SolidColorBrush x:Key="Brush_Ui_SecondaryFillContentButton_PointerOverBackground"
                    Color="{StaticResource Color_Global_Secondary900}"/>
-  <SolidColorBrush x:Key="Brush_Ui_SecondarySolidContentButton_PressedBackground"
+  <SolidColorBrush x:Key="Brush_Ui_SecondaryFillContentButton_PressedBackground"
                    Color="{StaticResource Color_Global_Secondary950}"/>
 
   <!-- `TitleBarControl` from `Frosty.Ui`. -->

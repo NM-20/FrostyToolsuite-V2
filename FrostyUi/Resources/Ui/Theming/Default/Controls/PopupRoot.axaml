@@ -1,0 +1,13 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ControlTheme x:Key="{x:Type PopupRoot}"
+                TargetType="PopupRoot">
+    <Setter Property="Background"
+            Value="{StaticResource Brush_Global_Transparent}"/>
+
+    <Setter Property="FontFamily"
+            Value="{StaticResource Font_Global_Body1_Regular}"/>
+    <Setter Property="Foreground"
+            Value="{StaticResource Brush_Global_Foreground}"/>
+  </ControlTheme>
+</ResourceDictionary>

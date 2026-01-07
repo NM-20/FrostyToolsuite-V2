@@ -1,0 +1,246 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Common text styles. These should ALWAYS be used. In the event that the existing
+       styles are insufficient, a new one may be added.
+  -->
+  <Style Selector=":is(TextBlock)">
+    <Style Selector="^.body">
+      <!-- Size variations. Cycle between these depending on the emphasis desired. -->
+      <Style Selector="^.lg">
+        <Setter Property="FontSize"
+                Value="18"/>
+        <Setter Property="LineHeight"
+                Value="130"/>
+      </Style>
+
+      <Style Selector="^.md">
+        <Setter Property="FontSize"
+                Value="16"/>
+        <Setter Property="LineHeight"
+                Value="130"/>
+      </Style>
+
+      <Style Selector="^.sm">
+        <Setter Property="FontSize"
+                Value="14"/>
+        <Setter Property="LineHeight"
+                Value="130"/>
+      </Style>
+
+      <Style Selector="^.xs">
+        <Setter Property="FontSize"
+                Value="12"/>
+        <Setter Property="LineHeight"
+                Value="100"/>
+      </Style>
+
+      <Style Selector="^.xxs">
+        <Setter Property="FontSize"
+                Value="10"/>
+        <Setter Property="LineHeight"
+                Value="100"/>
+      </Style>
+
+      <!-- Font variations. Cycle between these depending on the emphasis desired. -->
+
+      <!-- Body 1: Inter -->
+      <Style Selector="^.b1">
+        <Style Selector="^.bold">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Body1_Bold}"/>
+        </Style>
+
+        <Style Selector="^.light">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Body1_Light}"/>
+
+          <Style Selector="^.italic">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource Font_Global_Body1_LightItalic}"/>
+          </Style>
+        </Style>
+
+        <Style Selector="^.regular">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Body1_Regular}"/>
+
+          <Style Selector="^.italic">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource Font_Global_Body1_Italic}"/>
+          </Style>
+        </Style>
+
+        <Style Selector="^.semibold">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Body1_SemiBold}"/>
+        </Style>
+
+        <Style Selector="^.thin">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Body1_Thin}"/>
+        </Style>
+      </Style>
+
+      <!-- Body 2: DM Mono -->
+      <Style Selector="^.b2">
+        <Style Selector="^.bold">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Body2_Bold}"/>
+        </Style>
+
+        <Style Selector="^.light">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Body2_Light}"/>
+
+          <Style Selector="^.italic">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource Font_Global_Body2_LightItalic}"/>
+          </Style>
+        </Style>
+
+        <Style Selector="^.regular">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Body2_Regular}"/>
+
+          <Style Selector="^.italic">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource Font_Global_Body2_Italic}"/>
+          </Style>
+        </Style>
+
+        <Style Selector="^.semibold">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Body2_SemiBold}"/>
+        </Style>
+
+        <Style Selector="^.thin">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Body2_Thin}"/>
+        </Style>
+      </Style>
+    </Style>
+
+    <Style Selector="^.heading">
+      <!-- Size variations. Cycle between these depending on the emphasis desired. -->
+      <Style Selector="^.lg">
+        <Setter Property="FontSize"
+                Value="40"/>
+        <Setter Property="LineHeight"
+                Value="100"/>
+      </Style>
+
+      <Style Selector="^.md">
+        <Setter Property="FontSize"
+                Value="32"/>
+        <Setter Property="LineHeight"
+                Value="110"/>
+      </Style>
+
+      <Style Selector="^.sm">
+        <Setter Property="FontSize"
+                Value="24"/>
+        <Setter Property="LineHeight"
+                Value="120"/>
+      </Style>
+
+      <Style Selector="^.xs">
+        <Setter Property="FontSize"
+                Value="20"/>
+        <Setter Property="LineHeight"
+                Value="120"/>
+      </Style>
+
+      <Style Selector="^.xxs">
+        <Setter Property="FontSize"
+                Value="18"/>
+        <Setter Property="LineHeight"
+                Value="120"/>
+      </Style>
+
+      <Style Selector="^.xxxs">
+        <Setter Property="FontSize"
+                Value="14"/>
+        <Setter Property="LineHeight"
+                Value="120"/>
+      </Style>
+
+      <!-- Font variations. Cycle between these depending on the emphasis desired. -->
+
+      <!-- Heading 1: Inter -->
+      <Style Selector="^.h1">
+        <Style Selector="^.bold">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Heading1_Bold}"/>
+        </Style>
+
+        <Style Selector="^.light">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Heading1_Light}"/>
+
+          <Style Selector="^.italic">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource Font_Global_Heading1_LightItalic}"/>
+          </Style>
+        </Style>
+
+        <Style Selector="^.regular">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Heading1_Regular}"/>
+
+          <Style Selector="^.italic">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource Font_Global_Heading1_Italic}"/>
+          </Style>
+        </Style>
+
+        <Style Selector="^.semibold">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Heading1_SemiBold}"/>
+        </Style>
+
+        <Style Selector="^.thin">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Heading1_Thin}"/>
+        </Style>
+      </Style>
+
+      <!-- Heading 2: DM Mono -->
+      <Style Selector="^.h2">
+        <Style Selector="^.bold">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Heading2_Bold}"/>
+        </Style>
+
+        <Style Selector="^.light">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Heading2_Light}"/>
+
+          <Style Selector="^.italic">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource Font_Global_Heading2_LightItalic}"/>
+          </Style>
+        </Style>
+
+        <Style Selector="^.regular">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Heading2_Regular}"/>
+
+          <Style Selector="^.italic">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource Font_Global_Heading2_Italic}"/>
+          </Style>
+        </Style>
+
+        <Style Selector="^.semibold">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Heading2_SemiBold}"/>
+        </Style>
+
+        <Style Selector="^.thin">
+          <Setter Property="FontFamily"
+                  Value="{StaticResource Font_Global_Heading2_Thin}"/>
+        </Style>
+      </Style>
+    </Style>
+  </Style>
+</Styles>

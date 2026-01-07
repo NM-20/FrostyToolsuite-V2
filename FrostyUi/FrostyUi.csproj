@@ -16,12 +16,9 @@
     <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Italic.ttf" />
     <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Light.ttf" />
     <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-LightItalic.ttf" />
-    <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Medium.ttf" />
-    <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-MediumItalic.ttf" />
     <None Remove="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Regular.ttf" />
     <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Bold.ttf" />
     <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Light.ttf" />
-    <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Medium.ttf" />
     <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Regular.ttf" />
     <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-SemiBold.ttf" />
     <None Remove="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Thin.ttf" />
@@ -41,12 +38,6 @@
     <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-LightItalic.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
-    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Medium.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AvaloniaResource>
-    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-MediumItalic.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AvaloniaResource>
     <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\DMMono\DMMono-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
@@ -54,9 +45,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
     <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Light.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AvaloniaResource>
-    <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Medium.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaResource>
     <AvaloniaResource Include="Resources\Ui\Theming\Default\Fonts\Inter\Inter-Regular.ttf">
@@ -101,12 +89,55 @@
 
   <ItemGroup>
     <Folder Include="Controls\" />
+    <Folder Include="Xaml\" />
     <Folder Include="Windows\" />
     <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Colors.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Controls.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Controls\Button.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Controls\EmbeddableControlRoot.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Controls\OverlayPopupHost.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Controls\PopupRoot.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Controls\TitleBarControl.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Controls\ToolTip.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Converters.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Fonts.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\TextStyles.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Images.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
     <AvaloniaXaml Update="Resources\Ui\Theming\Default\Theme.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Windows.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Ui\Theming\Default\Windows\Window.axaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaXaml>
   </ItemGroup>

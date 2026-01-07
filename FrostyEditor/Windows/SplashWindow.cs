@@ -2,16 +2,16 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 
-namespace FrostyEditor.Views.Windows;
+namespace FrostyEditor.Windows;
 
-internal class MainWindow : Window
+internal class SplashWindow : Window
 {
-    protected override Type StyleKeyOverride => typeof(MainWindow);
+    protected override Type StyleKeyOverride => typeof(SplashWindow);
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MainWindow"/> class.
+    /// Initializes a new instance of the <see cref="SplashWindow"/> class.
     /// </summary>
-    public MainWindow()
+    public SplashWindow()
     {
         /*
          * We're not using Avalonia's templates at the moment, so we will

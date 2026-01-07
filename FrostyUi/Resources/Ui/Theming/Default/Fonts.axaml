@@ -1,23 +1,92 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <!-- Font URIs. These should NOT escape the scope of this asset. To use a particular font, see the `FontFamily` resources
-       defined afterwards.
+  <!-- `FontFamily` instances. These should NOT escape the scope of this asset. To access a particular font, view the aliases defined
+       afterwards.
   -->
-  <x:String x:Key="Font_Ui_DMMono_Italic">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-Italic.ttf</x:String>
-  <x:String x:Key="Font_Ui_DMMono_Light">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-Light.ttf</x:String>
-  <x:String x:Key="Font_Ui_DMMono_LightItalic">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-LightItalic.ttf</x:String>
-  <x:String x:Key="Font_Ui_DMMono_Medium">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-Medium.ttf</x:String>
-  <x:String x:Key="Font_Ui_DMMono_MediumItalic">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-MediumItalic.ttf</x:String>
-  <x:String x:Key="Font_Ui_DMMono_Regular">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-Regular.ttf</x:String>
+  <FontFamily x:Key="Font_Ui_DMMono_Italic">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-Italic.ttf</FontFamily>
+  <FontFamily x:Key="Font_Ui_DMMono_Light">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-Light.ttf</FontFamily>
+  <FontFamily x:Key="Font_Ui_DMMono_LightItalic">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-LightItalic.ttf</FontFamily>
+  <FontFamily x:Key="Font_Ui_DMMono_Regular">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/DMMono/DMMono-Regular.ttf</FontFamily>
 
-  <x:String x:Key="Font_Ui_Inter_Bold">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Bold.ttf</x:String>
-  <x:String x:Key="Font_Ui_Inter_Light">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Light.ttf</x:String>
-  <x:String x:Key="Font_Ui_Inter_Medium">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Medium.ttf</x:String>
-  <x:String x:Key="Font_Ui_Inter_Regular">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Regular.ttf</x:String>
-  <x:String x:Key="Font_Ui_Inter_SemiBold">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-SemiBold.ttf</x:String>
-  <x:String x:Key="Font_Ui_Inter_Thin">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Thin.ttf</x:String>
+  <FontFamily x:Key="Font_Ui_Inter_Bold">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Bold.ttf</FontFamily>
+  <FontFamily x:Key="Font_Ui_Inter_Light">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Light.ttf</FontFamily>
+  <FontFamily x:Key="Font_Ui_Inter_Regular">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Regular.ttf</FontFamily>
+  <FontFamily x:Key="Font_Ui_Inter_SemiBold">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-SemiBold.ttf</FontFamily>
+  <FontFamily x:Key="Font_Ui_Inter_Thin">fonts:Runtime#avares://FrostyUi/Resources/Ui/Theming/Default/Fonts/Inter/Inter-Thin.ttf</FontFamily>
 
-  <!-- `FontFamily` resources. These MUST be used in favor of accessing the URIs stored above directly, as all are reserved
-      for use within this asset only.
+  <!-- `FontFamily` aliases. These MUST be used in favor of accessing the instances defined above directly, as those are all reserved
+       for use within this asset only.
   -->
+
+  <!-- Body 1: Avalonia Inter. -->
+  <StaticResource x:Key="Font_Global_Body1_Bold"
+                  ResourceKey="Font_Ui_Inter_Bold"/>
+  <StaticResource x:Key="Font_Global_Body1_Light"
+                  ResourceKey="Font_Ui_Inter_Light"/>
+  <StaticResource x:Key="Font_Global_Body1_Regular"
+                  ResourceKey="Font_Ui_Inter_Regular"/>
+  <StaticResource x:Key="Font_Global_Body1_SemiBold"
+                  ResourceKey="Font_Ui_Inter_SemiBold"/>
+  <StaticResource x:Key="Font_Global_Body1_Thin"
+                  ResourceKey="Font_Ui_Inter_Thin"/>
+
+  <!-- Fallbacks for undefined font styles. -->
+  <StaticResource x:Key="Font_Global_Body1_Italic"
+                  ResourceKey="Font_Global_Body1_Regular"/>
+  <StaticResource x:Key="Font_Global_Body1_LightItalic"
+                  ResourceKey="Font_Global_Body1_Light"/>
+
+  <!-- Body 2: DM Mono. -->
+  <StaticResource x:Key="Font_Global_Body2_Italic"
+                  ResourceKey="Font_Ui_DMMono_Italic"/>
+  <StaticResource x:Key="Font_Global_Body2_Light"
+                  ResourceKey="Font_Ui_DMMono_Light"/>
+  <StaticResource x:Key="Font_Global_Body2_LightItalic"
+                  ResourceKey="Font_Ui_DMMono_LightItalic"/>
+  <StaticResource x:Key="Font_Global_Body2_Regular"
+                  ResourceKey="Font_Ui_DMMono_Regular"/>
+
+  <!-- Fallback for undefined font styles. -->
+  <StaticResource x:Key="Font_Global_Body2_Bold"
+                  ResourceKey="Font_Global_Body2_Regular"/>
+  <StaticResource x:Key="Font_Global_Body2_SemiBold"
+                  ResourceKey="Font_Global_Body2_Regular"/>
+  <StaticResource x:Key="Font_Global_Body2_Thin"
+                  ResourceKey="Font_Global_Body2_Regular"/>
+
+  <!-- Heading 1: Avalonia Inter. -->
+  <StaticResource x:Key="Font_Global_Heading1_Bold"
+                  ResourceKey="Font_Ui_Inter_Bold"/>
+  <StaticResource x:Key="Font_Global_Heading1_Light"
+                  ResourceKey="Font_Ui_Inter_Light"/>
+  <StaticResource x:Key="Font_Global_Heading1_Regular"
+                  ResourceKey="Font_Ui_Inter_Regular"/>
+  <StaticResource x:Key="Font_Global_Heading1_SemiBold"
+                  ResourceKey="Font_Ui_Inter_SemiBold"/>
+  <StaticResource x:Key="Font_Global_Heading1_Thin"
+                  ResourceKey="Font_Ui_Inter_Thin"/>
+
+  <!-- Fallbacks for undefined font styles. -->
+  <StaticResource x:Key="Font_Global_Heading1_Italic"
+                  ResourceKey="Font_Global_Heading1_Regular"/>
+  <StaticResource x:Key="Font_Global_Heading1_LightItalic"
+                  ResourceKey="Font_Global_Heading1_Light"/>
+
+  <!-- Heading 2: DM Mono. -->
+  <StaticResource x:Key="Font_Global_Heading2_Italic"
+                  ResourceKey="Font_Ui_DMMono_Italic"/>
+  <StaticResource x:Key="Font_Global_Heading2_Light"
+                  ResourceKey="Font_Ui_DMMono_Light"/>
+  <StaticResource x:Key="Font_Global_Heading2_LightItalic"
+                  ResourceKey="Font_Ui_DMMono_LightItalic"/>
+  <StaticResource x:Key="Font_Global_Heading2_Regular"
+                  ResourceKey="Font_Ui_DMMono_Regular"/>
+
+  <!-- Fallback for undefined font styles. -->
+  <StaticResource x:Key="Font_Global_Heading2_Bold"
+                  ResourceKey="Font_Global_Heading2_Regular"/>
+  <StaticResource x:Key="Font_Global_Heading2_SemiBold"
+                  ResourceKey="Font_Global_Heading2_Regular"/>
+  <StaticResource x:Key="Font_Global_Heading2_Thin"
+                  ResourceKey="Font_Global_Heading2_Regular"/>
 </ResourceDictionary>

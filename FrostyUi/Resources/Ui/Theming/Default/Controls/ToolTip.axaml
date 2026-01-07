@@ -1,0 +1,36 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ControlTheme x:Key="{x:Type ToolTip}"
+                TargetType="ToolTip">
+    <Setter Property="Background"
+            Value="{StaticResource Brush_Ui_ToolTip_Background}"/>
+    <Setter Property="BorderBrush"
+            Value="{StaticResource Brush_Ui_ToolTip_Border}"/>
+
+    <Setter Property="BorderThickness"
+            Value="1"/>
+    <Setter Property="CornerRadius"
+            Value="3"/>
+
+    <Setter Property="Opacity"
+            Value="0"/>
+
+    <Setter Property="Padding"
+            Value="8,6"/>
+
+    <Setter Property="Transitions">
+      <Transitions>
+        <DoubleTransition Duration="0:0:0.15"
+                          Property="Opacity"/>
+      </Transitions>
+    </Setter>
+
+    <!-- Since we've set a `DoubleTransition` for `Opacity`, it will listen
+         for this change and interpolate to the new value.
+    -->
+    <Style Selector="^:open">
+      <Setter Property="Opacity"
+              Value="1"/>
+    </Style>
+  </ControlTheme>
+</ResourceDictionary>

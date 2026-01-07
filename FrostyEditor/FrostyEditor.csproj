@@ -88,7 +88,25 @@
     <AvaloniaXaml Include="Resources\Editor\Theming\Default\Windows.axaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaXaml>
-    <AvaloniaXaml Include="Resources\Editor\Theming\Default\Windows\MainWindow.axaml">
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaXaml Update="Resources\Editor\Theming\Default\Colors.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Editor\Theming\Default\Converters.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Editor\Theming\Default\Theme.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Editor\Theming\Default\Views.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Editor\Theming\Default\Views\SplashWindowView.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaXaml>
+    <AvaloniaXaml Update="Resources\Editor\Theming\Default\Windows\SplashWindow.axaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AvaloniaXaml>
   </ItemGroup>

@@ -65,10 +65,10 @@ public abstract class RuntimeImageSource
     }
 
     /// <summary>
-    /// Gets the 
+    /// Resolves this <see cref="RuntimeImageSource"/> to its pointed image resource instance.
     /// </summary>
-    /// <returns></returns>
-    public object? Get() => (Source is not null ? (GetExternal() ?? GetInternal()) : default);
+    /// <returns>The pointed image resource instance.</returns>
+    public object? Get() => (Source is not null ? (GetExternal() ?? GetInternal()) : null);
 }
 
 public sealed class RuntimeBitmapSource : RuntimeImageSource

@@ -1,14 +1,20 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:media="using:Frosty.Ui.Media">
-  <ResourceDictionary.MergedDictionaries>
-    <!-- Core resources, these MUST be positioned at the top, as `StaticResource` markup is used to access them. -->
-    <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Colors.axaml</media:RuntimeResourceInclude>
-    <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Converters.axaml</media:RuntimeResourceInclude>
-    <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Fonts.axaml</media:RuntimeResourceInclude>
-    <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Images.axaml</media:RuntimeResourceInclude>
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:media="using:Frosty.Ui.Media">
+  <Styles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <!-- Core resources, these MUST be positioned at the top, as `StaticResource` markup is used to access them. -->
+        <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Colors.axaml</media:RuntimeResourceInclude>
+        <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Converters.axaml</media:RuntimeResourceInclude>
+        <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Fonts.axaml</media:RuntimeResourceInclude>
+        <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Images.axaml</media:RuntimeResourceInclude>
 
-    <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Controls.axaml</media:RuntimeResourceInclude>
-    <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Windows.axaml</media:RuntimeResourceInclude>
-  </ResourceDictionary.MergedDictionaries>
-</ResourceDictionary>
+        <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Controls.axaml</media:RuntimeResourceInclude>
+        <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Windows.axaml</media:RuntimeResourceInclude>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Styles.Resources>
+
+  <media:RuntimeStyleInclude Source="avares://FrostyUi/Resources/Ui/Theming/Default/TextStyles.axaml"/>
+</Styles>

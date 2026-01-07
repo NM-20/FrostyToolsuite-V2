@@ -31,8 +31,9 @@ internal unsafe abstract class BootflowBase
 
     // Avalonia configuration, don't remove; also used by visual designer.
     private static AppBuilder BuildAvaloniaApp() =>
-        AppBuilder.Configure<App>().
-        UsePlatformDetect().LogToTrace().WithRuntimeFontResolver();
+        AppBuilder.
+        Configure<App>().UsePlatformDetect().LogToTrace().WithOpacitySaveLayer().
+        WithRuntimeFontResolver();
 
     private static bool UseInjectionWorkflow() =>
         Config.Get("UseInjectedWorkflow", !ProfilesLibrary.HasDenuvoTicket);

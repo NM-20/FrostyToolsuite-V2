@@ -7,15 +7,14 @@ using Avalonia.Styling;
 using Frosty.Ui.Managers;
 using FrostyEditor.Extensions;
 using FrostyEditor.Utilities;
-using FrostyEditor.ViewModels;
-using FrostyEditor.Views.Windows;
+using FrostyEditor.Windows;
 
 namespace FrostyEditor;
 
 public partial class App : Application
 {
     private ResourceDictionary m_strings = new();
-    private ResourceDictionary m_theming = new();
+    private Styles             m_theming = new();
 
     /// <summary>
     /// The singleton instance of the <see cref="App"/> class. This should be preferred over <see cref="Application.Current"/>.
@@ -27,7 +26,7 @@ public partial class App : Application
         AvaloniaXamlLoader.Load(this);
 
         Resources.MergedDictionaries.Add(m_strings);
-        Resources.MergedDictionaries.Add(m_theming);
+        Styles.Add(m_theming);
 
         LocalizationManager.Instance.LocaleChanged += LocalizationManager_LocaleChanged;
         LocalizationManager.Instance.EditorRefresh();
@@ -66,16 +65,8 @@ public partial class App : Application
 
     private void ThemingManager_ThemeChanged(object? sender, ThemeChangedEventArgs e)
     {
-        m_theming.MergedDictionaries.Clear();
-
-        /*
-         * Compared to strings, we're given a collection of `IResourceProvider`s, meaning we'll need to merge these into our
-         * own dictionary.
-         */
-        foreach (IResourceProvider current in e.Resources)
-        {
-            m_theming.MergedDictionaries.Add(current);
-        }
+        m_theming.Clear();
+        m_theming.AddRange(e.Styles);
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -90,7 +81,7 @@ public partial class App : Application
              * Our `ViewLocator` will automatically assign a `DataContext` for the inner view of our `MainWindow`, so we can
              * omit the assignment here.
              */
-            desktop.MainWindow = new MainWindow();
+            desktop.MainWindow = new SplashWindow();
         }
 
         base.OnFrameworkInitializationCompleted();

@@ -2,6 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:media="using:Frosty.Ui.Media">
   <ResourceDictionary.MergedDictionaries>
-    <media:RuntimeResourceInclude>avares://FrostyEditor/Resources/Editor/Theming/Default/Windows/SplashWindow.axaml</media:RuntimeResourceInclude>
+    <media:RuntimeResourceInclude>avares://FrostyEditor/Resources/Editor/Theming/Default/Views/SplashWindowView.axaml</media:RuntimeResourceInclude>
   </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

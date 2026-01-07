@@ -12,7 +12,12 @@
         <Line/>
         <Line>{1}</Line>
     </String>
-
+    <String Identifier="Str_Ui_RuntimeStyleSource_LoadException">
+        <Line>An exception occurred while loading the style resource with key "{0}":</Line>
+        <Line/>
+        <Line>{1}</Line>
+    </String>
+    
     <String Identifier="Str_Ui_TitleBarControl_Maximize">Maximize</String>
     <String Identifier="Str_Ui_TitleBarControl_Minimize">Minimize</String>
     <String Identifier="Str_Ui_TitleBarControl_RestoreDown">Restore Down</String>

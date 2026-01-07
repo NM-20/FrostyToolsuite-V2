@@ -91,6 +91,27 @@
 
                   <Setter Property="Width"
                           Value="46"/>
+
+                  <!-- Rather than defining a new `SolidColorBrush`, we've chosen to configure `Opacity`, which
+                      enables more complex SVGs to replace the `TitleBarControl` icons (as compared to changing
+                      `fill` via the `Css` attached property).
+                  -->
+                  <Style Selector="^ > Image">
+                    <!-- Uniform size for all `Image` instances created in this scope, i.e. the Close SVG icon.
+                    -->
+                    <Setter Property="Height"
+                            Value="10"/>
+                    <Setter Property="Width"
+                            Value="10"/>
+
+                    <Setter Property="Opacity"
+                            Value="0.7"/>
+                  </Style>
+
+                  <Style Selector="^:pointerover > Image">
+                    <Setter Property="Opacity"
+                            Value="1"/>
+                  </Style>
                 </Style>
 
                 <!-- Close `Button`'s switch to highlight color. -->
@@ -106,7 +127,7 @@
                 </Style>
 
                 <!-- Maximize `Button`'s switch to "Restore Down" icon and tooltip. -->
-                <Style Selector="Button#PART_MaximizeButton.IsMaximized">
+                <Style Selector="Button#PART_MaximizeButton.is-maximized">
                   <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                     <Setter Property="Content">
                       <Template>
@@ -120,14 +141,6 @@
                   <Setter Property="ToolTip.Tip"
                           Value="{DynamicResource Str_Ui_TitleBarControl_RestoreDown}"/>
                 </Style>
-
-                <!-- Uniform size for all `Image` instances created in this scope, i.e. the Close SVG icon. -->
-                <Style Selector="Image">
-                  <Setter Property="Height"
-                          Value="10"/>
-                  <Setter Property="Width"
-                          Value="10"/>
-                </Style>
               </StackPanel.Styles>
 
               <Button x:Name="PART_MinimizeButton"
@@ -138,7 +151,7 @@
                 </Image>
               </Button>
               <Button x:Name="PART_MaximizeButton"
-                      Classes.IsMaximized="{Binding OwningWindow?.WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Maximized', RelativeSource={RelativeSource TemplatedParent}}"
+                      Classes.is-maximized="{Binding OwningWindow?.WindowState, Converter={StaticResource Conv_Ui_EnumToBool}, ConverterParameter='Maximized', RelativeSource={RelativeSource TemplatedParent}}"
                       IsVisible="{TemplateBinding CanMaximize}"
                       ToolTip.Tip="{DynamicResource Str_Ui_TitleBarControl_Maximize}">
                 <Image>

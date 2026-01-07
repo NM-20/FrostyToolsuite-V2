@@ -3,6 +3,10 @@
                     xmlns:media="using:Frosty.Ui.Media">
   <ResourceDictionary.MergedDictionaries>
     <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Controls/Button.axaml</media:RuntimeResourceInclude>
+    <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Controls/EmbeddableControlRoot.axaml</media:RuntimeResourceInclude>
+    <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Controls/OverlayPopupHost.axaml</media:RuntimeResourceInclude>
+    <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Controls/PopupRoot.axaml</media:RuntimeResourceInclude>
     <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Controls/TitleBarControl.axaml</media:RuntimeResourceInclude>
+    <media:RuntimeResourceInclude>avares://FrostyUi/Resources/Ui/Theming/Default/Controls/ToolTip.axaml</media:RuntimeResourceInclude>
   </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

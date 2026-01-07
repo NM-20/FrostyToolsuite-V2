@@ -45,9 +45,10 @@ public class ViewLocator : IDataTemplate
          */
         var model = (ViewModelBase)(param!);
 
-        var name = param!.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
-        var type = Type.GetType(name);
+        var name =
+            param!.GetType().AssemblyQualifiedName!.Replace("ViewModel", "View", StringComparison.Ordinal);
 
+        var type = Type.GetType(name);
         if (type is not null)
         {
             return CreateView(model, type);

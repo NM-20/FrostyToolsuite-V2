@@ -3,6 +3,95 @@
   <!-- Generic content `Button`, intended as the default `Button` theme. -->
   <ControlTheme x:Key="GenericContentButton"
                 TargetType="Button">
+    <ControlTheme.Resources>
+      <!-- Primary `Button` base. Should not be used directly; intended to store
+           common properties within Primary variants.
+      -->
+      <ControlTheme x:Key="PrimarySecondaryButtonShared"
+                    TargetType="Button">
+        <!-- We have set a `BorderThickness` to ensure we're matching dimensions
+             with the Outline style.
+             Avalonia doesn't seem to have an option to adjust `Border` position
+             so we'll have to do this.
+        -->
+        <Setter Property="BorderThickness"
+                Value="1"/>
+        <Setter Property="CornerRadius"
+                Value="6"/>
+      </ControlTheme>
+
+      <!-- Solid-fill Primary content `Button`. Use for everything else, i.e. a
+           "Cancel" `Button`.
+      -->
+      <ControlTheme x:Key="PrimaryFillContentButton"
+                    BasedOn="{StaticResource PrimarySecondaryButtonShared}"
+                    TargetType="Button">
+        <Setter Property="Background"
+                Value="{StaticResource Brush_Ui_PrimaryFillContentButton_NeutralBackground}"/>
+        <Setter Property="BorderBrush"
+                Value="{StaticResource Brush_Ui_PrimaryFillContentButton_NeutralBackground}"/>
+
+        <Style Selector="^:pointerover">
+          <Setter Property="Background"
+                  Value="{StaticResource Brush_Ui_PrimaryFillContentButton_PointerOverBackground}"/>
+          <Setter Property="BorderBrush"
+                  Value="{StaticResource Brush_Ui_PrimaryFillContentButton_PointerOverBackground}"/>
+        </Style>
+
+        <Style Selector="^:pressed">
+          <Setter Property="Background"
+                  Value="{StaticResource Brush_Ui_PrimaryFillContentButton_PressedBackground}"/>
+          <Setter Property="BorderBrush"
+                  Value="{StaticResource Brush_Ui_PrimaryFillContentButton_PressedBackground}"/>
+        </Style>
+      </ControlTheme>
+
+      <!-- Outlined Primary content `Button`. -->
+      <ControlTheme x:Key="PrimaryOutlineContentButton"
+                    BasedOn="{StaticResource PrimaryFillContentButton}"
+                    TargetType="Button">
+        <Setter Property="Background"
+                Value="{StaticResource Brush_Global_Transparent}"/>
+      </ControlTheme>
+
+      <!-- Solid-fill Secondary content `Button`. Use for "positive"/confirming
+           actions, i.e. a Save `Button`.
+      -->
+      <ControlTheme x:Key="SecondaryFillContentButton"
+                    BasedOn="{StaticResource PrimarySecondaryButtonShared}"
+                    TargetType="Button">
+        <Setter Property="Background"
+                Value="{StaticResource Brush_Ui_SecondaryFillContentButton_NeutralBackground}"/>
+        <Setter Property="BorderBrush"
+                Value="{StaticResource Brush_Ui_SecondaryFillContentButton_NeutralBackground}"/>
+
+        <Style Selector="^:pointerover">
+          <Setter Property="Background"
+                  Value="{StaticResource Brush_Ui_SecondaryFillContentButton_PointerOverBackground}"/>
+          <Setter Property="BorderBrush"
+                  Value="{StaticResource Brush_Ui_SecondaryFillContentButton_PointerOverBackground}"/>
+        </Style>
+
+        <Style Selector="^:pressed">
+          <Setter Property="Background"
+                  Value="{StaticResource Brush_Ui_SecondaryFillContentButton_PressedBackground}"/>
+          <Setter Property="BorderBrush"
+                  Value="{StaticResource Brush_Ui_SecondaryFillContentButton_PressedBackground}"/>
+        </Style>
+      </ControlTheme>
+
+      <!-- Outlined Secondary content `Button`. -->
+      <ControlTheme x:Key="SecondaryOutlineContentButton"
+                    BasedOn="{StaticResource SecondaryFillContentButton}"
+                    TargetType="Button">
+        <Setter Property="Background"
+                Value="{StaticResource Brush_Global_Transparent}"/>
+      </ControlTheme>
+    </ControlTheme.Resources>
+
+    <Setter Property="Background"
+            Value="{StaticResource Brush_Global_Transparent}"/>
+
     <Style Selector="^:pointerover">
       <Setter Property="Background"
               Value="{StaticResource Brush_Ui_GenericContentButton_PointerOverBackground}"/>
@@ -12,90 +101,33 @@
       <Setter Property="Background"
               Value="{StaticResource Brush_Ui_GenericContentButton_PressedBackground}"/>
     </Style>
-  </ControlTheme>
 
-  <!-- Primary `Button` base. Should not be used directly; intended to store
-       common properties within Primary variants.
-  -->
-  <ControlTheme x:Key="PrimarySecondaryButtonShared"
-                TargetType="Button">
-    <!-- We have set a `BorderThickness` to ensure we're matching dimensions
-         with the Outline style.
-         Avalonia doesn't seem to have an option to adjust `Border` position
-         so we'll have to do this.
+    <!-- Variation classes. These are essentially `ControlTheme` wrappers,
+         albeit a bit more convenient.
     -->
-    <Setter Property="BorderThickness"
-            Value="1"/>
-    <Setter Property="CornerRadius"
-            Value="6"/>
-  </ControlTheme>
+    <Style Selector="^.primary">
+      <Style Selector="^.fill">
+        <Setter Property="Theme"
+                Value="{StaticResource PrimaryFillContentButton}"/>
+      </Style>
 
-  <!-- Solid-fill Primary content `Button`. Use for everything else, i.e. a
-       "Cancel" `Button`.
-  -->
-  <ControlTheme x:Key="PrimarySolidContentButton"
-                BasedOn="{StaticResource PrimarySecondaryButtonShared}"
-                TargetType="Button">
-    <Setter Property="Background"
-            Value="{StaticResource Brush_Ui_PrimarySolidContentButton_NeutralBackground}"/>
-    <Setter Property="BorderBrush"
-            Value="{StaticResource Brush_Ui_PrimarySolidContentButton_NeutralBackground}"/>
-
-    <Style Selector="^:pointerover">
-      <Setter Property="Background"
-              Value="{StaticResource Brush_Ui_PrimarySolidContentButton_PointerOverBackground}"/>
-      <Setter Property="BorderBrush"
-              Value="{StaticResource Brush_Ui_PrimarySolidContentButton_PointerOverBackground}"/>
+      <Style Selector="^.outline">
+        <Setter Property="Theme"
+                Value="{StaticResource PrimaryOutlineContentButton}"/>
+      </Style>
     </Style>
 
-    <Style Selector="^:pressed">
-      <Setter Property="Background"
-              Value="{StaticResource Brush_Ui_PrimarySolidContentButton_PressedBackground}"/>
-      <Setter Property="BorderBrush"
-              Value="{StaticResource Brush_Ui_PrimarySolidContentButton_PressedBackground}"/>
+    <Style Selector="^.secondary">
+      <Style Selector="^.fill">
+        <Setter Property="Theme"
+                Value="{StaticResource SecondaryFillContentButton}"/>
+      </Style>
+
+      <Style Selector="^.outline">
+        <Setter Property="Theme"
+                Value="{StaticResource SecondaryOutlineContentButton}"/>
+      </Style>
     </Style>
-  </ControlTheme>
-
-  <!-- Outlined Primary content `Button`. -->
-  <ControlTheme x:Key="PrimaryOutlineContentButton"
-                BasedOn="{StaticResource PrimarySolidContentButton}"
-                TargetType="Button">
-    <Setter Property="Background"
-            Value="{StaticResource Brush_Global_Transparent}"/>
-  </ControlTheme>
-
-  <!-- Solid-fill Secondary content `Button`. Use for "positive"/confirming
-       actions, i.e. a Save `Button`.
-  -->
-  <ControlTheme x:Key="SecondarySolidContentButton"
-                BasedOn="{StaticResource PrimarySecondaryButtonShared}"
-                TargetType="Button">
-    <Setter Property="Background"
-            Value="{StaticResource Brush_Ui_SecondarySolidContentButton_NeutralBackground}"/>
-    <Setter Property="BorderBrush"
-            Value="{StaticResource Brush_Ui_SecondarySolidContentButton_NeutralBackground}"/>
-
-    <Style Selector="^:pointerover">
-      <Setter Property="Background"
-              Value="{StaticResource Brush_Ui_SecondarySolidContentButton_PointerOverBackground}"/>
-      <Setter Property="BorderBrush"
-              Value="{StaticResource Brush_Ui_SecondarySolidContentButton_PointerOverBackground}"/>
-    </Style>
-
-    <Style Selector="^:pressed">
-      <Setter Property="Background"
-              Value="{StaticResource Brush_Ui_SecondarySolidContentButton_PressedBackground}"/>
-      <Setter Property="BorderBrush"
-              Value="{StaticResource Brush_Ui_SecondarySolidContentButton_PressedBackground}"/>
-    </Style>
-  </ControlTheme>
-
-  <!-- Outlined Secondary content `Button`. -->
-  <ControlTheme x:Key="SecondaryOutlineContentButton"
-                BasedOn="{StaticResource SecondarySolidContentButton}"
-                TargetType="Button">
-    <Setter Property="Background"
-            Value="{StaticResource Brush_Global_Transparent}"/>
   </ControlTheme>
 
   <!-- This sets the default `Button` theme across the UI. If desired, edit
